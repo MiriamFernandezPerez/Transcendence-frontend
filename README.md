@@ -1,8 +1,37 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + Tailwind + i18n
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FrameFork + Environtment install
 
-Currently, two official plugins are available:
+React + Vite
+```bash
+cd E:\42_Cursus\Trascendence
+npm create vite@latest frontend -- --template react-ts
+cd frontend
+```
+
+Tailwind
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+Change vite.config.ts file, should be:
+```ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss(),],
+})
+```
+
+Add at the begining of src/index.css:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
