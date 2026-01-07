@@ -1,4 +1,4 @@
-# React + TypeScript + Vite + Tailwind + i18n
+## React + TypeScript + Vite + Tailwind + i18n
 
 Environtment install
 
