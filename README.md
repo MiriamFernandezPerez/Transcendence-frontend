@@ -1,32 +1,32 @@
-## React + TypeScript + Vite + Tailwind + i18n
+# React + TypeScript + Vite + Tailwind + i18n
 
-Environtment install
+## Environtment install
 
-Node Instalation
+### Node Instalation
 ```bash
 nvm install 20
 nvm use 20
 ```
 
-Docker Instalation
+### Docker Instalation
 ```bash
 docker pull node:24-alpine
 docker run -it --rm --entrypoint sh node:24-alpine
 ```
-# Verify the Node.js version:
+### Verify the Node.js version:
 ```bash
 node -v
 ```
 Should print "v24.12.0". or similar
 
-# Verify the NPM version:
+### Verify the NPM version:
 ```bash
 npm -v
 ```
 Should print "11.6.2".
 
 
-# FrameFork + Environtment install
+### FrameFork + Environtment install
 React + Vite
 ```bash
 cd E:\42_Cursus\Trascendence
@@ -34,7 +34,7 @@ npm create vite@latest frontend -- --template react-ts
 cd frontend
 ```
 
-Tailwind
+### Tailwind Instalation
 ```bash
 npm install tailwindcss @tailwindcss/vite
 ```
@@ -58,6 +58,12 @@ Add at the begining of src/index.css:
 @tailwind utilities;
 ```
 
+### i18n Sistem Instalation
+```bash
+npm install i18next react-i18next
+```
+
+### More Info About React + Vite
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
