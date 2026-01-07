@@ -1,7 +1,32 @@
 # React + TypeScript + Vite + Tailwind + i18n
 
-FrameFork + Environtment install
+Environtment install
 
+Node Instalation
+```bash
+nvm install 20
+nvm use 20
+```
+
+Docker Instalation
+```bash
+docker pull node:24-alpine
+docker run -it --rm --entrypoint sh node:24-alpine
+```
+# Verify the Node.js version:
+```bash
+node -v
+```
+Should print "v24.12.0". or similar
+
+# Verify the NPM version:
+```bash
+npm -v
+```
+Should print "11.6.2".
+
+
+# FrameFork + Environtment install
 React + Vite
 ```bash
 cd E:\42_Cursus\Trascendence
