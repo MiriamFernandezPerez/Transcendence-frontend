@@ -34,6 +34,26 @@ npm create vite@latest frontend -- --template react-ts
 cd frontend
 ```
 
+Selected language: TypeScript.
+
+Reason: TypeScript helps us prevent errors, document data, and keep code scalable. It avoids misplaced props, silent undefineds, and bugs you notice too late. The error appears while you're writing code, that is, at edit time, not at runtime or compilation time.
+
+✔️ Errors are avoided if the backend changes something.
+✔️ You're forced to rethink the data model.
+
+Example:
+An endpoint is changed in the backend, but the frontend continues using the old format:
+In JavaScript:
+💥 Runtime error
+
+💥 You find out too late.
+In TypeScript:
+❌ Immediate error in VSCode.
+
+✔️ You can fix it in minutes.
+Furthermore, TypeScript is more professional and a standard for businesses. It allows for better management of large projects because they are more scalable.
+
+
 ### Tailwind Instalation
 ```bash
 npm install tailwindcss @tailwindcss/vite
