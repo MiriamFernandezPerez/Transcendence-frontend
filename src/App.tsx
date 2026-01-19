@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import Index from './pages/Index';
+import AuthProvider from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
-  const [count, setCount] = useState(0)
+	return (
+		<AuthProvider>
+			<Router>
+				<Routes>
+					{/* ------ PUBLIC ROUTES ------ */}
+					{/* Main Route to show Landing Page */}
+					<Route path="/" element={<Landing />} />
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="text-3xl font-bold underline">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+					{/* Route to Login */}
+					<Route path="/login" element={<Login />} />
+
+					{/* Route to Register */}
+					<Route path="/register" element={<Register />} />
+
+					{/* Route to Privacy Policy */}
+					<Route path="/privacy_policy" element={<Privacy />} />
+
+					{/* Route to Terms of Service */}
+					<Route path="/terms_of_service" element={<Terms />} />
+
+
+					{/* ------ PRIVATE ROUTES ------ */}
+					<Route element={<ProtectedRoute />}>
+                        <Route path="/index" element={<Index />} />
+                        {/* Aquí irán /profile, /game, /chat, etc. */}
+                    </Route>
+
+				</Routes>
+			</Router>
+		</AuthProvider>
+	)
 }
 
-export default App
+export default App;
