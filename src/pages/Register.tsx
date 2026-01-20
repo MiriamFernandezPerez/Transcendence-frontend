@@ -1,77 +1,168 @@
-// import React from 'react';
-import { Link } from 'react-router-dom';
-import Footer from '../components/Footer';
+import React, { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Logo from '../components/Logo';
+import AuthLayout from "../components/layouts/AuthLayout";
+import InputGroup from "../components/ui/InputGroup";
+import AlertSuccess from "../components/ui/AlertSuccess";
 
 const Register = () => {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
+	const [isRegistered, setIsRegistered] = useState(false);
+
+	/* Inputs States */
+	const [formData, setFormData] = useState({
+		username: "",
+		email: "",
+		password: ""
+	});
+
+	/* Validation errors state */
+	const [errors, setErrors] = useState({
+		username: "",
+		email: "",
+		password: ""
+	});
+
+	/* Handle Input Change */
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = e.target;
+		setFormData({ ...formData, [name]: value });
+
+		if (errors[name as keyof typeof errors]) {
+			setErrors({ ...errors, [name]: "" });
+		}
+	};
+
+	/* Validation Function */
+	const validate = (data: typeof formData) => {
+		let isValid = true;
+		let newErrors = { username: "", email: "", password: "" };
+
+		/* Username Validation */
+		if (!data.username) {
+			newErrors.username = t("register.username_required");
+			isValid = false;
+		}
+
+		/* Email Validation */
+		if (!data.email) {
+			newErrors.email = t("register.email_required");
+			isValid = false;
+		}
+		/* Simple email regex for validation */
+		else if (!/\S+@\S+\.\S+/.test(data.email)) {
+			newErrors.email = t("register.email_invalid");
+			isValid = false;
+		}
+		
+		/* Password Validation */
+		if (!data.password) {
+			newErrors.password = t("register.password_required");
+      		isValid = false;
+	    }
+		/* Password length check */
+	    else if (data.password.length < 6) {
+    		newErrors.password = t("register.password_short");
+      		isValid = false;
+    	}
+		/* Password capital letter check */
+		else if (!/[A-Z]/.test(data.password)) {
+	  		newErrors.password = t("register.password_capital"); 
+			isValid = false;
+		}
+		/* Password special character check */
+		else if (!/[!@#$%^&*(),.?":{}|<>]/.test(data.password)) {
+      		newErrors.password = t("register.password_special"); 
+    		isValid = false;
+    	}
+
+   		setErrors(newErrors);
+    	return isValid;
+	};
+
+	/* Handle Form Submit */
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+
+		/* Trim inputs */
+		const cleanData = {
+			username: formData.username.trim(),
+			email: formData.email.trim(),
+			password: formData.password
+		};
+
+		if (validate(cleanData)) {
+			// Aquí iría la llamada a la API para registrar al usuario
+			// const response = await api.post('/auth/register', cleanData);
+			
+			// Por ahora, simulamos un registro exitoso
+			setIsRegistered(true);
+			console.log(t("register.success"), cleanData);
+
+			/* Timeout to show success message before redirecting */
+			setTimeout(() => {
+				navigate('/login');
+			}, 3000);
+		}
+	}
+
 	return (
-		<div className="min-h-screen flex flex-col items-center justify-center bg-dark-900 relative px-6">
+        <AuthLayout title={t('register.title')} subtitle={t('register.subtitle')}>
+            
+            {isRegistered ? (
+                <AlertSuccess 
+                    title={t("register.success")} 
+                    message={t("register.back_login")} />
+            ) : (
+                <form className="space-y-4" noValidate onSubmit={handleSubmit}>
+                    <InputGroup
+                        label={t('register.username')}
+                        type="text"
+                        name="username"
+                        placeholder="player1"
+                        value={formData.username}
+                        onChange={handleChange}
+                        error={errors.username}
+                    />
+                    <InputGroup
+                        label={t('register.email')}
+                        type="email"
+                        name="email"
+                        placeholder="email@email.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        error={errors.email}
+                    />
+                    <InputGroup
+                        label={t('register.password')}
+                        type="password"
+                        name="password"
+                        placeholder="••••••••"
+                        value={formData.password}
+                        onChange={handleChange}
+                        error={errors.password}
+                        className="mb-8"
+                    />
 
-			{/* Login Card (Glassmorphism) */}
-			<div className="relative z-10 w-full max-w-md p-6 sm:p-8 bg-dark-800/50 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)]">
+                    <button type="submit" className="w-full py-3.5 px-4 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl shadow-lg transition-transform transform hover:scale-[1.02]">
+                        {t('register.enter')}
+                    </button>
 
-				{/* Title & Logo */}
-				<div className="text-center mb-8">
-					<Link
-						to="/"
-						className="inline-flex items-center justify-center w-12 h-12" title="Back to LandingPage">
-						<Logo />
-					</Link>
-
-					<h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{t('register.title')}</h2>
-					<p className="text-slate-400 mt-2 text-sm">{t('register.subtitle')}</p>
-				</div>
-
-				<form className="space-y-4">
-					{/* Username Field */}
-					<div>
-						<label className="block text-sm font-medium text-slate-300 mb-1 ml-1">{t('register.username')}</label>
-						<input
-							type="text"
-							placeholder="player1"
-							className="w-full px-4 py-3 rounded-xl bg-dark-900/50 border border-slate-700 text-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all duration-200 placeholder-slate-500"/>
+					<div className="mt-6 text-center">
+						<p className="text-slate-400 text-sm">
+							{t('register.account')}{' '}
+							<Link to="/login" className="text-brand-500 font-bold hover:underline transition-colors">
+								{t('register.login')}
+							</Link>
+						</p>
 					</div>
+                </form>
+            )}
 
-					<div>
-						<label className="block text-sm font-medium text-slate-300 mb-1 ml-1">{t('register.email')}</label>
-						<input
-							type="email"
-							placeholder="email@email.com"
-							className="w-full px-4 py-3 rounded-xl bg-dark-900/50 border border-slate-700 text-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all duration-200 placeholder-slate-500"/>
-					</div>
-
-					<div className="mb-8">
-						<label className="block text-sm font-medium text-slate-300 mb-1 ml-1">{t('register.password')}</label>
-						<input
-							type="password"
-							placeholder="••••••••"
-							className="w-full px-4 py-3 rounded-xl bg-dark-900/50 border border-slate-700 text-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all duration-200 placeholder-slate-500"/>
-					</div>
-
-					<button
-						type="submit" 
-						className="w-full py-3.5 px-4 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl shadow-[0_0_20px_-5px_rgba(59,130,246,0.5)] transition-all duration-200 transform hover:scale-[1.02]">
-						{t('register.enter')}
-					</button>
-				</form>
-
-				{/* Card Footer */}
-				<div className="mt-6 text-center">
-					<p className="text-slate-400 text-sm">
-						{t('register.account')}{' '}
-						<Link to="/login" className="text-brand-500 font-medium hover:text-brand-400 hover:underline transition-colors">
-							{t('register.login')}
-						</Link>
-					</p>
-				</div>
-			</div>
-
-			{/* Footer Legal */}
-			<Footer className="w-full mt-8" />
-		</div>
-	);
+            
+        </AuthLayout>
+    );
 };
 
 export default Register;

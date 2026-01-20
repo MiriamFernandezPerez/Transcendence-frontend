@@ -19,7 +19,10 @@
 		"enter": "Enter",
 		"forgot_pass": "Forgot your password?",
 		"no_account": "Don't have an account?",
-		"register": "Register"
+		"register": "Register",
+		"email_required": "Email is required.",
+		"email_invalid": "Invalid email address.",
+		"password_required": "Password is required."
 	},
 	"register": {
 		"title": "Create account",
@@ -29,7 +32,35 @@
 		"password": "Password",
 		"enter": "Register",
 		"account": "Have an account?",
-		"login": "Login"
+		"login": "Login",
+		"username_required": "Username is required.",
+		"email_required": "Email is required.",
+		"email_invalid": "Invalid email address.",
+		"password_required": "Password is required.",
+		"password_short": "Password must be at least 6 characters long.",
+		"password_capital": "Password must contain at least one capital letter.",
+		"password_special": "Password must contain at least one special character.",
+		"success": "Registration successful!",
+		"back_login": "Loading Login"		
+	},
+	"password": {
+		"title": "Reset Password",
+		"subtitle": "Enter your email to reset your password",
+		"email": "E-mail",
+		"password": "New Password",
+		"confirm_password": "Confirm New Password",
+		"enter": "Change Password",
+		"back_login": "Loading Login",
+		"email_required": "Email is required.",
+		"email_invalid": "Invalid email address.",
+		"email_not_registered": "The email is not registered in our database.",
+		"email_registered": "The email is in the database.",
+		"password_required": "Password is required.",
+		"password_short": "Password must be at least 6 characters long.",
+		"password_capital": "Password must contain at least one capital letter.",
+		"password_special": "Password must contain at least one special character.",
+		"passwords_match": "Passwords must match.",
+		"success": "Password changed for:"
 	},
 	"privacy": {
     "1": "Introduction",

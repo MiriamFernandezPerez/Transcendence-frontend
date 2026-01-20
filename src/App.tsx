@@ -7,6 +7,7 @@ import Terms from './pages/Terms';
 import Index from './pages/Index';
 import AuthProvider from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
 	return (
@@ -22,6 +23,9 @@ function App() {
 
 					{/* Route to Register */}
 					<Route path="/register" element={<Register />} />
+
+					{/* Route to Password Reset */}
+					<Route path="/reset_password" element={<ResetPassword />} />
 
 					{/* Route to Privacy Policy */}
 					<Route path="/privacy_policy" element={<Privacy />} />

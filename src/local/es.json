@@ -18,7 +18,10 @@
 		"enter": "Entrar",
 		"forgot_pass": "¿Olvidaste tu contraseña?",
 		"no_account": "¿No tienes cuenta?",
-		"register": "Registrarse"
+		"register": "Registrarse", 
+		"email_required": "Correo electrónico obligatorio.",
+		"email_invalid": "Correo electrónico no válido.",
+		"password_required": "La contraseña es obligatoria."
 	},
 	"register": {
 		"title": "Crear cuenta",
@@ -28,7 +31,35 @@
 		"password": "Contraseña",
 		"enter": "Registrarse",
 		"account": "¿Tienes cuenta?",
-		"login": "Iniciar Sesión"
+		"login": "Iniciar Sesión",
+		"username_required": "El nombre de usuario es obligatorio.",
+		"email_required": "Correo electrónico obligatorio.",
+		"email_invalid": "Correo electrónico no válido.",
+		"password_required": "La contraseña es obligatoria.",
+		"password_short": "La contraseña debe tener al menos 6 caracteres.",
+		"password_capital": "La contraseña debe contener al menos una letra mayúscula.",
+		"password_special": "La contraseña debe contener al menos un carácter especial.",
+		"success": "¡Registro realizado!",
+		"back_login": "Cargando Inicio de Sesión"
+	},
+	"password": {
+		"title": "Restablecer Contraseña",
+		"subtitle": "Introduce tu correo electrónico para restablecer tu contraseña",
+		"email": "Correo electrónico",
+		"password": "Nueva Contraseña",
+		"confirm_password": "Confirmar Nueva Contraseña",
+		"enter": "Cambiar contraseña",
+		"back_login": "Cargando Inicio de Sesión",
+		"email_required": "Correo electrónico obligatorio.",
+		"email_invalid": "Correo electrónico no válido.",
+		"email_not_registered": "El correo electrónico no está registrado en nuestra base de datos.",
+		"email_registered": "El correo electrónico está en la base de datos.",
+		"password_required": "La contraseña es obligatoria.",
+		"password_short": "La contraseña debe tener al menos 6 caracteres.",
+		"password_capital": "La contraseña debe contener al menos una letra mayúscula.",
+		"password_special": "La contraseña debe contener al menos un carácter especial.",
+		"passwords_match": "Las contraseñas deben coincidir.",
+		"success": "Contraseña cambiada para:"
 	},
 	"privacy":{
 		"1": "Introducción",

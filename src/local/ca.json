@@ -19,7 +19,10 @@
 		"enter": "Enter",
 		"forgot_pass": "Has oblidat la teva contrasenya?",
 		"no_account": "No tens compte?",
-		"register": "Registrar-se"
+		"register": "Registrar-se", 
+		"email_required": "Correu electrònic obligatori.",
+		"email_invalid": "Correu electrònic no vàlid.",
+		"password_required": "La contrasenya és obligatòria."
 	},
 	"register": {
 		"title": "Crear compte",
@@ -29,7 +32,35 @@
 		"password": "Contrasenya",
 		"enter": "Registrar-se",
 		"account": "¿Tenes compte?",
-		"login": "Iniciar sessió"
+		"login": "Iniciar sessió",
+		"username_required": "El nom d'usuari és obligatori.",
+		"email_required": "Correu electrònic obligatori.",
+		"email_invalid": "Correu electrònic no vàlid.",
+		"password_required": "La contrasenya és obligatòria.",
+		"password_short": "La contrasenya ha de tenir almenys 6 caràcters.",
+		"password_capital": "La contrasenya ha de contenir almenys una lletra majúscula.",
+		"password_special": "La contrasenya ha de contenir almenys un caràcter especial.",
+		"success": "Registre realitzat!",
+		"back_login": "Carregant a l'inici de sessió"
+	},
+	"password": {
+		"title": "Restablir Contrasenya",
+		"subtitle": "Introdueix el teu correu electrònic per restablir la teva contrasenya",
+		"email": "Correu electrònic",
+		"password": "Nova Contrasenya",
+		"confirm_password": "Confirma la Nova Contrasenya",
+		"enter": "Canviar contrasenya",
+		"back_login": "Carregant a l'inici de sessió",
+		"email_required": "Correu electrònic obligatori.",
+		"email_invalid": "Correu electrònic no vàlid.",
+		"email_not_registered": "El correu electrònic no està registrat a la nostra base de dades.",
+		"email_registered": "El correu electrònic està a la base de dades.",
+		"password_required": "La contrasenya és obligatòria.",
+		"password_short": "La contrasenya ha de tenir almenys 6 caràcters.",
+		"password_capital": "La contrasenya ha de contenir almenys una lletra majúscula.",
+		"password_special": "La contrasenya ha de contenir almenys un caràcter especial.",
+		"passwords_match": "Les contrasenyes han de coincidir.",
+		"success": "Contrasenya canviada per a:"
 	},
 	"privacy": {
     "1": "Introducció",
