@@ -13,27 +13,27 @@ const DashboardNavbar = () => {
     const { t } = useTranslation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-	/* Get current URL path to highlight active link on navbar*/
-	const url = useLocation();
-	/* On Desktop */
-	const getPathDesktop = (path: string) => {
-		return (
-			url.pathname === path
-			/* Active Link Style */
-			? "text-white font-semibold relative py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-brand-500 after:shadow-[0_0_10px_#3B82F6]" 
-			/* Inactive Link Style */
-			: "text-slate-300 hover:text-white transition-colors hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]");
-	}
-	/* On Mobile */
-	const getPathMobile = (path: string) => {
-		return (
-			url.pathname === path
-			/* Active Link Style */
-			? "p-3 rounded-lg bg-brand-500 text-white font-medium text-center"
-			/* Inactive Link Style */
-			: "p-3 rounded-lg hover:bg-white/5 text-slate-300 text-center transition-colors");
-	}
-	
+    /* Get current URL path to highlight active link on navbar*/
+    const url = useLocation();
+    /* On Desktop */
+    const getPathDesktop = (path: string) => {
+        return (
+            url.pathname === path
+            /* Active Link Style */
+            ? "text-white font-semibold relative py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-brand-500 after:shadow-[0_0_10px_#3B82F6]" 
+            /* Inactive Link Style */
+            : "text-slate-300 hover:text-white transition-colors hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]");
+    }
+    /* On Mobile */
+    const getPathMobile = (path: string) => {
+        return (
+            url.pathname === path
+            /* Active Link Style */
+            ? "p-3 rounded-lg bg-brand-500 text-white font-medium text-center"
+            /* Inactive Link Style */
+            : "p-3 rounded-lg hover:bg-white/5 text-slate-300 text-center transition-colors");
+    }
+    
 
     return (
         <nav className="w-full h-24 bg-dark-900/95 backdrop-blur-md fixed top-0 z-50 transition-all duration-300 border-b border-white/5">

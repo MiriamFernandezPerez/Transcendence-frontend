@@ -3,32 +3,32 @@ import LegalLayout from '../components/layouts/LegalLayout';
 import LegalSection from '../components/ui/LegalSection';
 
 const Privacy = () => {
-	const { t } = useTranslation();
+    const { t } = useTranslation();
 
-	{/* Privacy Policy */}
-	return (
-		<LegalLayout title={`🔐 ${t('footer.privacy')}`}>
-			
-			<main className="mx-auto max-w-3xl text-left mb-18">
+    {/* Privacy Policy */}
+    return (
+        <LegalLayout title={`🔐 ${t('footer.privacy')}`}>
+            
+            <main className="mx-auto max-w-3xl text-left mb-18">
 
-				{/* Section 1 */}
-				<LegalSection title={`1. ${t('privacy.1')}`}>
-					<p>{t('privacy.1text')}</p>
-				</LegalSection>
+                {/* Section 1 */}
+                <LegalSection title={`1. ${t('privacy.1')}`}>
+                    <p>{t('privacy.1text')}</p>
+                </LegalSection>
 
-				Section 2
-				<LegalSection title={`2. ${t('privacy.2')}`}>
-					<p>{t('privacy.2text')}</p>
-					<h4 className="text-base sm:text-lg md:text-xl font-semibold text-slate-300 mt-4 mb-2">
+                {/* Section 2 */}
+                <LegalSection title={`2. ${t('privacy.2')}`}>
+                    <p>{t('privacy.2text')}</p>
+                    <h4 className="text-base sm:text-lg md:text-xl font-semibold text-slate-300 mt-4 mb-2">
                         2.1 {t('privacy.21')}
                     </h4>
-					<ul className="list-disc pl-6 space-y-1">
-						<li>{t('privacy.211')}</li>
-						<li>{t('privacy.212')}</li>
-						<li>{t('privacy.213')}</li>
-						<li>{t('privacy.214')}</li>
-					</ul>
-				<h4 className="text-base sm:text-lg md:text-xl font-semibold text-slate-300 mt-4 mb-2">
+                    <ul className="list-disc pl-6 space-y-1">
+                        <li>{t('privacy.211')}</li>
+                        <li>{t('privacy.212')}</li>
+                        <li>{t('privacy.213')}</li>
+                        <li>{t('privacy.214')}</li>
+                    </ul>
+                <h4 className="text-base sm:text-lg md:text-xl font-semibold text-slate-300 mt-4 mb-2">
                         2.2 {t('privacy.22')}
                     </h4>
                     <ul className="list-disc pl-6 space-y-1">
@@ -110,7 +110,7 @@ const Privacy = () => {
 
             </main>
         </LegalLayout>
-	);
+    );
 };
 
 export default Privacy;

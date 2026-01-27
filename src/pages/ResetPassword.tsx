@@ -6,101 +6,101 @@ import InputGroup from "../components/ui/InputGroup";
 import AlertSuccess from "../components/ui/AlertSuccess";
 
 const ResetPassword = () => {
-	const { t } = useTranslation();
-	const navigate = useNavigate();
+    const { t } = useTranslation();
+    const navigate = useNavigate();
 
-	/* State to verify if email is on database */
-	const [isEmailed, setIsEmailed] = useState(false);
+    /* State to verify if email is on database */
+    const [isEmailed, setIsEmailed] = useState(false);
 
-	/* State to wait for loading database response */
-	const [isLoading, setIsLoading] = useState(false);
+    /* State to wait for loading database response */
+    const [isLoading, setIsLoading] = useState(false);
 
-	/* State to show success message when password is changed */
-	const [isPasswordChanged, setIsPasswordChanged] = useState(false);
+    /* State to show success message when password is changed */
+    const [isPasswordChanged, setIsPasswordChanged] = useState(false);
 
-	/* Inputs States */
-	const [formData, setFormData] = useState({
-		email: "",
-		password: "",
-		confirm_password: ""
-	});
+    /* Inputs States */
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+        confirm_password: ""
+    });
 
-	/* Validation errors state */
-	const [errors, setErrors] = useState({
-		email: "",
-		password: "",
-		confirm_password: ""
-	});
+    /* Validation errors state */
+    const [errors, setErrors] = useState({
+        email: "",
+        password: "",
+        confirm_password: ""
+    });
 
-	/* Handle Input Change */
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setFormData({ ...formData, [name]: value });
+    /* Handle Input Change */
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
 
-		if (errors[name as keyof typeof errors]) {
-			setErrors({ ...errors, [name]: "" });
-		}
-	};
+        if (errors[name as keyof typeof errors]) {
+            setErrors({ ...errors, [name]: "" });
+        }
+    };
 
-	/* Validation Function by steps */
-	const validate = (step: 'email' | 'password') => {
-		let isValid = true;
-		let newErrors = { ...errors };
+    /* Validation Function by steps */
+    const validate = (step: 'email' | 'password') => {
+        let isValid = true;
+        let newErrors = { ...errors };
 
-		/* Email Validation */
-		if (step === 'email') {
-			newErrors.email = "";
-			if (!formData.email.trim()) {
-				newErrors.email = t("password.email_required");
-				isValid = false;
-			}
-			else if (!/\S+@\S+\.\S+/.test(formData.email.trim())) {
-				newErrors.email = t("password.email_invalid");
-				isValid = false;
-			}
-		}
+        /* Email Validation */
+        if (step === 'email') {
+            newErrors.email = "";
+            if (!formData.email.trim()) {
+                newErrors.email = t("password.email_required");
+                isValid = false;
+            }
+            else if (!/\S+@\S+\.\S+/.test(formData.email.trim())) {
+                newErrors.email = t("password.email_invalid");
+                isValid = false;
+            }
+        }
 
-		/* Password Validation */
-		if (step === 'password') {
-			newErrors.password = "";
-			newErrors.confirm_password = "";
+        /* Password Validation */
+        if (step === 'password') {
+            newErrors.password = "";
+            newErrors.confirm_password = "";
 
-			if (!formData.password) {
-				newErrors.password = t("password.password_required");
-				isValid = false;
-			}
-			/* Password length check */
-			else if (formData.password.length < 6) {
-				newErrors.password = t("password.password_short");
-				isValid = false;
-			}
-			/* Password capital letter check */
-			else if (!/[A-Z]/.test(formData.password)) {
-				newErrors.password = t("password.password_capital"); 
-				isValid = false;
-			}
-			/* Password special character check */
-			else if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
-				newErrors.password = t("password.password_special"); 
-				isValid = false;
-			}
-			
-			/* Confirm Same Passwords  */
-			if (formData.password !== formData.confirm_password) {
-				newErrors.confirm_password = t("password.passwords_match");
-				isValid = false;
-			}
-		}
+            if (!formData.password) {
+                newErrors.password = t("password.password_required");
+                isValid = false;
+            }
+            /* Password length check */
+            else if (formData.password.length < 6) {
+                newErrors.password = t("password.password_short");
+                isValid = false;
+            }
+            /* Password capital letter check */
+            else if (!/[A-Z]/.test(formData.password)) {
+                newErrors.password = t("password.password_capital"); 
+                isValid = false;
+            }
+            /* Password special character check */
+            else if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
+                newErrors.password = t("password.password_special"); 
+                isValid = false;
+            }
+            
+            /* Confirm Same Passwords  */
+            if (formData.password !== formData.confirm_password) {
+                newErrors.confirm_password = t("password.passwords_match");
+                isValid = false;
+            }
+        }
 
-		setErrors(newErrors);
-		return isValid;
-	};	
-	
-	/* Handle Form Submit */
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
+        setErrors(newErrors);
+        return isValid;
+    };  
+    
+    /* Handle Form Submit */
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
 
-		/* Verify email */
+        /* Verify email */
         if (!isEmailed) {
             if (!validate('email')) return;
 
@@ -116,7 +116,7 @@ const ResetPassword = () => {
                     setIsEmailed(true);
                     setErrors(prev => ({ ...prev, email: "" }));
                 }
-				else {
+                else {
                     /* If e-mail is not in the database */
                     setErrors(prev => ({ 
                         ...prev, 
@@ -144,11 +144,11 @@ const ResetPassword = () => {
         }
     };
 
-	/* Dinamic Title */
+    /* Dinamic Title */
     const pageTitle = isPasswordChanged ? "¡Hecho!" : t("password.title");
     const pageSubtitle = isPasswordChanged ? "Redirigiendo..." : t("password.subtitle");
 
-	return (
+    return (
         <AuthLayout title={pageTitle} subtitle={pageSubtitle}>
             
             {isPasswordChanged ? (

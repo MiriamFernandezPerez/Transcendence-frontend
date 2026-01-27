@@ -22,14 +22,14 @@ const Friends = () => {
                         <p className="text-slate-400 text-sm mt-1">Gestiona tus aliados y rivales</p>
                     </div>
 
-                    {/*  Search */}
+                    {/* Search */}
                     <div className="relative w-full md:w-96 group">
                         <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-brand-500 transition-colors" />
                         <input
                             type="text"
                             placeholder={t('friends.search_placeholder')}
-                            /* We use the input gray defined in the guide */
-                            className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-600 border border-white/10 text-white placeholder-slate-300 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all shadow-lg"
+                            /* Refactor: Use standard input class .input-nexus defined in CSS */
+                            className="input-nexus pl-11"
                         />
                     </div>
                 </div>

@@ -10,7 +10,8 @@ interface DashboardLayoutProps {
 const DashboardLayout = ({ children, isCentered = false }: DashboardLayoutProps) => {
     return (
         /* Padding top added to compensate for fixed Navbar on mobile */
-        <div className="min-h-screen w-full bg-dark-900 text-white font-sans overflow-hidden flex flex-col relative pt-28 md:pt-0">
+        /* Changed to pt-28 to match Navbar height */
+        <div className="min-h-screen w-full bg-dark-900 text-white font-sans overflow-hidden flex flex-col relative pt-28 ">
 
             <Navbar />
 
@@ -21,9 +22,9 @@ const DashboardLayout = ({ children, isCentered = false }: DashboardLayoutProps)
             <main className={`
                 flex-1 px-4 sm:px-6 relative z-10 flex flex-col min-h-[calc(100vh-96px)]
                 ${isCentered 
-					/* Mobile: Top / Desktop: Center */
+                    /* Mobile: Top / Desktop: Center */
                     ? 'justify-start md:justify-center items-center' 
-					/* Always Top */
+                    /* Always Top */
                     : 'justify-start items-stretch'                  
                 }
             `}>

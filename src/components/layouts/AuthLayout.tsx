@@ -16,11 +16,11 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
       {/* Container */}
       <div className="relative z-10 w-full max-w-md p-6 sm:p-8 bg-dark-800/50 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)]">
         
-		{ /*Close button */}
-		<Link 
+        { /*Close button */}
+        <Link 
           to="/" 
           className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white transition-colors rounded-full hover:bg-white/5">
-				<FaXmark  />
+                <FaXmark  />
         </Link>
 
         {/* Header */}

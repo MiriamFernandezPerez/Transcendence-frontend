@@ -8,24 +8,25 @@ const Landing = () => {
     const { t } = useTranslation();
 
     return (
-		/* Main Container */
-		<main className="h-screen w-full bg-dark-900 text-white font-sans overflow-hidden flex flex-col relative">
+        /* Main Container */
+        <main className="h-screen w-full bg-dark-900 text-white font-sans overflow-hidden flex flex-col relative">
 
-			{/* Decorative Element */}
-			<Separator />
+            {/* Decorative Element */}
+            <Separator />
 
-			{/* Navbar */}
-			<LandingNavbar />
+            {/* Navbar */}
+            <LandingNavbar />
 
-			{/* Main Content */}
-			<section className="flex-1 flex flex-col items-center justify-center px-4 relative z-10 w-full">
-				<div className="w-full max-w-4xl mx-auto flex flex-col items-center">
-					{/* Title Group */}
-					<div className="mb-6 space-y-2 text-center">
-						<h1 className="text-5xl md:text-7xl font-black tracking-tight drop-shadow-[0_0_25px_rgba(59,130,246,0.6)]">
+            {/* Main Content */}
+            <section className="flex-1 flex flex-col items-center justify-center px-4 relative z-10 w-full">
+                <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
+                    {/* Title Group */}
+                    <div className="mb-6 space-y-2 text-center">
+                        <h1 className="text-5xl md:text-7xl font-black tracking-tight drop-shadow-[0_0_25px_rgba(59,130,246,0.6)]">
                             NEXUS NINE
                         </h1>
-                        <h2 className="text-3xl md:text-6xl font-black text-transparent bg-clip-text bg-linear-to-b from-white to-slate-400">
+                        {/* Changed bg-linear-to-b to bg-gradient-to-b */}
+                        <h2 className="text-3xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">
                             CARD GAME
                         </h2>
                     </div>
@@ -42,15 +43,15 @@ const Landing = () => {
                             {t('landing.start')}
                         </button>
                     </Link>
-				</div>
+                </div>
             </section>
 
             {/* Footer */}
-			<div className="relative z-20">
-            	<Footer />
-			</div>
-		</main>
-	);
+            <div className="relative z-20">
+                <Footer />
+            </div>
+        </main>
+    );
 };
 
 export default Landing;

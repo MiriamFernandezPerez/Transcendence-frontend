@@ -10,6 +10,7 @@
     /* Backgrounds (Dark Mode) */
     --bg-main: #0f172a;    /* dark-900 */
     --bg-surface: #1e293b; /* dark-800 */
+	--bg-footer: #0d1424; /* footer */
     
     /* Semantic States */
     --color-success: #22c55e; /* green-500 */
@@ -27,7 +28,7 @@
 
     --color-dark-900: var(--bg-main);
     --color-dark-800: var(--bg-surface);
-    
+    --color-darker: var(--bg-footer);
     /* Custom Animations */
     --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
     --animate-fade-in-down: fade-in-down 0.8s ease-out forwards;
@@ -56,8 +57,7 @@
 
     /* Standard form inputs */
     .input-nexus {
-        @apply w-full rounded-xl bg-slate-600 border border-white/10 text-white placeholder-slate-300 
-               focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all shadow-lg;
+        @apply w-full px-4 py-3 rounded-xl bg-slate-600 border border-white/10 text-white placeholder-slate-300 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all shadow-lg;
     }
 
     /* Action Buttons */

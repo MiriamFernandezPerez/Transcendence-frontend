@@ -8,86 +8,86 @@ import AuthLayout from "../components/layouts/AuthLayout";
 import InputGroup from "../components/ui/InputGroup";
 
 const Login = () => {
-	const { t } = useTranslation();
-	const { login } = useAuth();
-	const navigate = useNavigate();
+    const { t } = useTranslation();
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
-	/* Inputs States */
-	const [formData, setFormData] = useState({
-		email: "",
-		password: ""
-	});
+    /* Inputs States */
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    });
 
-	/* Validation errors state */
-	const [errors, setErrors] = useState({
-		email: "",
-		password: ""
-	});
+    /* Validation errors state */
+    const [errors, setErrors] = useState({
+        email: "",
+        password: ""
+    });
 
-	/* Handle Input Change */
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		setFormData({ ...formData, [name]: value });
+    /* Handle Input Change */
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
 
-		if (errors[name as keyof typeof errors]) {
-			setErrors({ ...errors, [name]: "" });
-		}
-	};
+        if (errors[name as keyof typeof errors]) {
+            setErrors({ ...errors, [name]: "" });
+        }
+    };
 
-	/* Validation Function */
-	const validate = (data: typeof formData) => {
-		let isValid = true;
-		let newErrors = { email: "", password: "" };
+    /* Validation Function */
+    const validate = (data: typeof formData) => {
+        let isValid = true;
+        let newErrors = { email: "", password: "" };
 
-		/* Email Validation */
-		if (!data.email) {
-			newErrors.email = t("login.email_required");
-			isValid = false;
-		}
-		/* Simple email regex for validation */
-		else if (!/\S+@\S+\.\S+/.test(data.email)) {
-			newErrors.email = t("login.email_invalid");
-			isValid = false;
-		}
+        /* Email Validation */
+        if (!data.email) {
+            newErrors.email = t("login.email_required");
+            isValid = false;
+        }
+        /* Simple email regex for validation */
+        else if (!/\S+@\S+\.\S+/.test(data.email)) {
+            newErrors.email = t("login.email_invalid");
+            isValid = false;
+        }
 
-		/* Password Validation */
-		if (!data.password) {
-			newErrors.password = t("login.password_required");
-			isValid = false;
-		}
+        /* Password Validation */
+        if (!data.password) {
+            newErrors.password = t("login.password_required");
+            isValid = false;
+        }
 
-		setErrors(newErrors);
-		return isValid;
-	};	
-	
-	/* Handle Form Submit */
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
+        setErrors(newErrors);
+        return isValid;
+    };  
+    
+    /* Handle Form Submit */
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
 
-		/* Trim and toLowerCase on email input */
-		/* Password not trimmed even toLowerCase */
-		const cleanData = {
-			email: formData.email.trim(),
-			password: formData.password
-		};
+        /* Trim and toLowerCase on email input */
+        /* Password not trimmed even toLowerCase */
+        const cleanData = {
+            email: formData.email.trim(),
+            password: formData.password
+        };
 
-		/* Validate Inputs Form */
-		if (!validate(cleanData))
-			return;
-		
-		/* SIMULACION DE LOGUEO*/
-		/* En un caso real, aquí se haría la llamada a la API para autenticar al usuario. Mientras no tengo backend simulo un usuario */
-		const mirindaw = {
-			id: '1',
-			username: "mirindaw",
-			email: formData.email
-		};
-		login(mirindaw);
-		console.log("Usuario logueado:", mirindaw);
-		navigate("/index");
-	};
+        /* Validate Inputs Form */
+        if (!validate(cleanData))
+            return;
+        
+        /* SIMULACION DE LOGUEO*/
+        /* En un caso real, aquí se haría la llamada a la API para autenticar al usuario. Mientras no tengo backend simulo un usuario */
+        const mirindaw = {
+            id: '1',
+            username: "mirindaw",
+            email: formData.email
+        };
+        login(mirindaw);
+        console.log("Usuario logueado:", mirindaw);
+        navigate("/index");
+    };
 
-	return (
+    return (
         <AuthLayout title={t("login.title")} subtitle={t("login.subtitle")}>
             <form className="space-y-4" onSubmit={handleSubmit} noValidate>
                 <InputGroup

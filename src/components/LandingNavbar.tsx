@@ -24,7 +24,7 @@ const LandingNavbar = () => {
                 <div className="hidden lg:flex items-center gap-6">
                     <LanguageSelector />
                     <div className="h-4 w-px bg-slate-700"></div>
-					<Link to="/" className="text-white font-semibold relative py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-brand-500 after:shadow-[0_0_10px_#3B82F6]">{t('landing.home')}</Link>
+                    <Link to="/" className="text-white font-semibold relative py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-brand-500 after:shadow-[0_0_10px_#3B82F6]">{t('landing.home')}</Link>
                     <span className="text-slate-600">|</span>
                     <Link to="/login" className="text-slate-300 hover:text-white transition-colors font-medium">{t('landing.login')}</Link>
                     <span className="text-slate-600">|</span>
@@ -41,7 +41,7 @@ const LandingNavbar = () => {
             {isMenuOpen && (
                 <div className="lg:hidden absolute top-24 left-0 w-full bg-dark-900 border-b border-white/10 p-4 flex flex-col gap-2 shadow-2xl animate-fade-in-down">
                     {/* Enlace Inicio explícito para consistencia */}
-                    <Link to="/" className="p-3 rounded-lg bg-brand-500 text-brand-300 font-medium text-center" onClick={() => setIsMenuOpen(false)}>
+                    <Link to="/" className="p-3 rounded-lg bg-brand-500 text-white font-medium text-center" onClick={() => setIsMenuOpen(false)}>
                         {t('landing.home')}
                     </Link>
                     

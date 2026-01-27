@@ -14,9 +14,10 @@ const DashboardCard = ({ title, subtitle, icon, onClick, variant = 'secondary' }
     const baseStyles = "relative group flex items-center gap-5 p-6 rounded-2xl border transition-all duration-300 transform hover:scale-[1.02] cursor-pointer overflow-hidden";
     
     /* Styles based on variant */
+    /* Refactored to use brand variables where possible */
     const styles = variant === 'primary' 
-        ? "bg-gradient-to-r from-blue-600 to-blue-500 border-blue-400/50 shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(37,99,235,0.6)]"
-        : "bg-dark-800/60 backdrop-blur-md border-white/10 hover:border-brand-500/50 hover:bg-dark-800 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)]";
+        ? "bg-gradient-to-r from-brand-600 to-brand-500 border-brand-400/50 shadow-[0_0_25px_rgba(59,130,246,0.4)] hover:shadow-[0_0_35px_rgba(59,130,246,0.6)]"
+        : "glass-panel glass-panel-hover"; // Using reusable classes
 
     const iconColor = variant === 'primary' ? 'text-white' : 'text-brand-500';
 
