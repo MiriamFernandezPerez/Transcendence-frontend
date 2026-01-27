@@ -2,10 +2,10 @@
 	"landing": {
 		"title": "TRANSCENDENCE CARD GAME",
 		"subtitle": "Play online matches with your friends. Climb the ranking and compete in tournaments.",
-		"start": "Start Now",
+		"home": "Home",
 		"login": "Login",
 		"register": "Register",
-		"footer": "Privacy Policy | Terms of Service"
+		"start": "Start Now"
 	},
 	"footer": {
 		"privacy": "Privacy Policy",
@@ -62,6 +62,60 @@
 		"passwords_match": "Passwords must match.",
 		"success": "Password changed for:"
 	},
+	"navbar": {
+		"dashboard": "Dashboard",
+		"friends": "Friends",
+		"profile": "Profile",
+		"logout": "Logout"
+	},
+	"dashboard": {
+		"hello": "Hello",
+		"ready": "Are you ready to play?",
+		"play": "Play Now",
+		"friends": "Friends",
+		"profile": "Profile",
+		"profile_info": "View your profile",
+		"history": "History",
+		"history_info": "Match history",
+		"games_played": "Games Played",
+		"wins": "Wins",
+		"losses": "Losses",
+		"win_rate": "Win Rate",
+		"no_stats": "No statistics available. Play some games to see your stats here!"
+	},
+	"friends": {
+		"title": "Friends List",
+		"add_friend": "Add Friend",
+		"search_placeholder": "Enter username to add",
+		"no_friends": "You have no friends added. Start adding friends to play together!",
+		"friend_request_sent": "Friend request sent to",
+		"friend_request_received": "Friend request received from",
+		"accept": "Accept",
+		"decline": "Decline",
+		"remove_friend": "Remove Friend",
+		"friend_removed": "Friend removed:",
+		"not_found": "User not found.",
+		"already_friends": "You are already friends with this user.",
+		"request_pending": "A friend request is already pending with this user."
+	},
+	"profile": {
+		"title": "User Profile",
+		"username": "Username",
+		"email": "E-mail",
+		"avatar": "Avatar",
+		"change_avatar": "Change Avatar",
+		"upload": "Upload",
+		"stats": "Statistics",
+		"games_played": "Games Played",
+		"wins": "Wins",
+		"losses": "Losses",
+		"win_rate": "Win Rate",
+		"no_stats": "No statistics available.",
+		"edit_profile": "Edit Profile",
+		"save_changes": "Save Changes",
+		"changes_saved": "Profile changes saved.",
+		"invalid_file": "Invalid file. Please upload an image file (jpg, png)."
+	}, 
 	"privacy": {
     "1": "Introduction",
     "1text": "At Nexus Nine, we respect our users' privacy and are committed to protecting their personal data. This Privacy Policy explains what information we collect, how we use it, and what rights users have regarding their data. Nexus Nine is an academic project developed as part of the 42 curriculum and has no commercial purpose.",

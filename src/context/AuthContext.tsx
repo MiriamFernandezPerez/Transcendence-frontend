@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
-import type { User, AuthContextType } from '../types/Auth';
+import type { User, AuthContextType } from './Auth';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -10,11 +10,13 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         const checkSession = async () => {
             try {
-                // Simulación de retraso de red
+
+				// Aqui iría la llamada a la API para verificar la sesión y me devuelva una Cookie HTTP-Only o un Token JWT.
+                // Mientras no tengo backend hago simulación de retraso de red como si estuviera llamando a una API
                 await new Promise(resolve => setTimeout(resolve, 500)); 
                 
-                // Empezamos sin sesión para probar el login manual
-                setUser(null); 
+                // Empezamos sin sesión para probar el login manual si esta comentado es para evitar deslogueos automáticos
+                //setUser(null); 
 
             } catch (error) {
                 console.log("No hay sesión activa");

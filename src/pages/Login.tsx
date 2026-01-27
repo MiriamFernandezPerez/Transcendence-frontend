@@ -76,23 +76,16 @@ const Login = () => {
 			return;
 		
 		/* SIMULACION DE LOGUEO*/
-		/* En un caso real, aquí se haría la llamada a la API para autenticar al usuario */
+		/* En un caso real, aquí se haría la llamada a la API para autenticar al usuario. Mientras no tengo backend simulo un usuario */
 		const mirindaw = {
 			id: '1',
 			username: "mirindaw",
 			email: formData.email
 		};
 		login(mirindaw);
+		console.log("Usuario logueado:", mirindaw);
 		navigate("/index");
 	};
-
-	// /* Input Class Error Style */
-	// const getInputClass = (hasError: boolean) => `
-    //     w-full px-4 py-3 rounded-xl bg-dark-900/50 border 
-    //     ${hasError ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-slate-700 focus:border-brand-500 focus:ring-brand-500/20'}
-    //     text-white focus:outline-none focus:ring-2 
-    //     transition-all duration-200 placeholder-slate-500
-    // `;
 
 	return (
         <AuthLayout title={t("login.title")} subtitle={t("login.subtitle")}>

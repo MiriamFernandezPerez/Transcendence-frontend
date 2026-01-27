@@ -2,10 +2,10 @@
 	"landing": {
 		"title": "TRANSCENDENCE JOC DE CARTES",
 		"subtitle": "Juga partides online amb els teus amics. Puja al rànquing i competeix en tornejos.",
-		"start": "Començar ara",
+		"home": "Inici",
 		"login": "Iniciar sessió",
 		"register": "Registrar-se",
-		"footer": "Política de Privacitat | Termes de Servei"
+		"start": "Començar ara"
 	},
 	"footer": {
 		"privacy": "Política de privacitat",
@@ -62,6 +62,60 @@
 		"passwords_match": "Les contrasenyes han de coincidir.",
 		"success": "Contrasenya canviada per a:"
 	},
+	"navbar": {
+		"dashboard": "Tauler",
+		"friends": "Amics",
+		"profile": "Perfil",
+		"logout": "Tancar sessió"
+	},
+	"dashboard": {
+		"hello": "Hola",
+		"ready": "Preparat/da per jugar?",
+		"play": "Jugar ara",
+		"friends": "Amics",
+		"profile": "Perfil",
+		"profile_info": "Consulta el teu perfil",
+		"history": "Historial",
+		"history_info": "Historial de partides",
+		"games_played": "Partides jugades",
+		"wins": "Victòries",
+		"losses": "Derrotes",
+		"win_rate": "Taxa de victòries",
+		"no_stats": "No hi ha estadístiques disponibles. Juga algunes partides per veure les teves estadístiques aquí!"
+	},
+	"friends": {
+		"title": "Llista d'Amics",
+		"add_friend": "Afegir amic",
+		"search_placeholder": "Introdueix el nom d'usuari per afegir",
+		"no_friends": "No tens amics afegits. Comença a afegir amics per jugar junts!",
+		"friend_request_sent": "Sol·licitud d'amistat enviada a",
+		"friend_request_received": "Sol·licitud d'amistat rebuda de",
+		"accept": "Acceptar",
+		"decline": "Rebutjar",
+		"remove_friend": "Eliminar amic",
+		"friend_removed": "Amic eliminat:",
+		"not_found": "Usuari no trobat.",
+		"already_friends": "Ja ets amic d'aquest usuari.",
+		"request_pending": "Ja hi ha una sol·licitud d'amistat pendent amb aquest usuari."
+	},
+	"profile": {
+		"title": "Perfil d'Usuari",
+		"username": "Nom d'usuari",
+		"email": "Correu electrònic",
+		"avatar": "Avatar",
+		"change_avatar": "Canviar Avatar",
+		"upload": "Pujar",
+		"stats": "Estadístiques",
+		"games_played": "Partides jugades",
+		"wins": "Victòries",
+		"losses": "Derrotes",
+		"win_rate": "Taxa de victòries",
+		"no_stats": "No hi ha estadístiques disponibles.",
+		"edit_profile": "Editar Perfil",
+		"save_changes": "Guardar Canvis",
+		"changes_saved": "Canvis al perfil guardats.",
+		"invalid_file": "Fitxer no vàlid. Si us plau, puja un fitxer d'imatge (jpg, png)."
+	}, 
 	"privacy": {
     "1": "Introducció",
     "1text": "A Nexus Nine, respectem la privacitat dels nostres usuaris i estem compromesos amb la protecció de les seves dades personals. Aquesta Política de Privacitat explica quina informació recopilem, com la utilitzem i quins drets tenen els usuaris sobre les seves dades. Nexus Nine és un projecte acadèmic desenvolupat com a part del currículum de 42 i no té finalitats comercials.",

@@ -1,42 +1,87 @@
 @import "tailwindcss";
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
 
-@theme {
-	--font-sans: 'Inter', sans-serif;
+/* GLOBAL VARIABLES */
+:root {
+    /* Brand Palette (Nexus Blue) */
+    --color-brand-400: #60a5fa;
+    --color-brand-500: #3b82f6; /* Main color */
+    --color-brand-600: #2563eb;
 
-	/* Main Background */
-	--color-dark-900: #0f172a;
-	
-	/* Cards Background */
-	--color-dark-800: #1e293b;
-
-	/*Footer Background*/
-	--color-darker: #0d1424;
-
-	/* Main Blue */
-	--color-brand-500: #3b82f6;
-	
-	/* Hover Blue */
-	--color-brand-600: #2563eb;
-	
-
-	/* Animation to be used for the background (optional) */
-	--animate-glow: glow 2s ease-in-out infinite alternate;
-
-	@keyframes glow {
-		from {
-			box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
-		}
-
-		to {
-			box-shadow: 0 0 20px #3b82f6, 0 0 30px #3b82f6;
-		}
-	}
+    /* Backgrounds (Dark Mode) */
+    --bg-main: #0f172a;    /* dark-900 */
+    --bg-surface: #1e293b; /* dark-800 */
+    
+    /* Semantic States */
+    --color-success: #22c55e; /* green-500 */
+    --color-danger: #ef4444;  /* red-500 */
+    --color-warning: #f59e0b; /* amber-500 */
 }
 
-/* Utility for blue glow */
-.shadow-glow {
-	box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.5);
+@theme {
+    /* 2. CONNECT VARIABLES TO TAILWIND */
+    /* This allows you to continue using bg-brand-500 but now reads the variable */
+    
+    --color-brand-400: var(--color-brand-400);
+    --color-brand-500: var(--color-brand-500);
+    --color-brand-600: var(--color-brand-600);
+
+    --color-dark-900: var(--bg-main);
+    --color-dark-800: var(--bg-surface);
+    
+    /* Custom Animations */
+    --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+    --animate-fade-in-down: fade-in-down 0.8s ease-out forwards;
+
+    @keyframes fade-in-up {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in-down {
+        0% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+}
+
+/* 3. REUSABLE COMPONENTS (HTML CLEANUP) */
+@layer components {
+    
+    /* Base style for glass cards (Friends, Dashboard, Inputs) */
+    .glass-panel {
+        @apply bg-dark-800/40 backdrop-blur-md border border-white/5 rounded-xl transition-all duration-300;
+    }
+
+    .glass-panel-hover {
+        @apply hover:bg-dark-800/80 hover:border-brand-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)];
+    }
+
+    /* Standard form inputs */
+    .input-nexus {
+        @apply w-full rounded-xl bg-slate-600 border border-white/10 text-white placeholder-slate-300 
+               focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all shadow-lg;
+    }
+
+    /* Action Buttons */
+    .btn-icon {
+        @apply p-3 rounded-lg transition-all duration-200 flex items-center justify-center;
+    }
+
+    /* Primary Button (Blue - Invite/Play) */
+    .btn-primary {
+        @apply bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-500/20 hover:shadow-brand-500/40 hover:-translate-y-0.5;
+    }
+
+    /* Secondary Button (Border - Profile) */
+    .btn-secondary {
+        @apply border border-brand-500/30 text-brand-400 hover:bg-brand-500/10 hover:border-brand-500 hover:text-white;
+    }
+
+    /* Danger Button (Red - Delete) */
+    .btn-danger {
+        @apply text-slate-600 hover:bg-red-500/10 hover:text-red-500;
+    }
+
+    /* Disabled Button */
+    .btn-disabled {
+        @apply bg-white/5 text-slate-600 cursor-not-allowed border border-white/5;
+    }
 }

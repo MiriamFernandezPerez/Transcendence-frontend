@@ -8,6 +8,7 @@ import Index from './pages/Index';
 import AuthProvider from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import ResetPassword from './pages/ResetPassword';
+import Friends from './pages/Friends';
 
 function App() {
 	return (
@@ -37,6 +38,7 @@ function App() {
 					{/* ------ PRIVATE ROUTES ------ */}
 					<Route element={<ProtectedRoute />}>
                         <Route path="/index" element={<Index />} />
+						<Route path="/friends" element={<Friends />} />
                         {/* Aquí irán /profile, /game, /chat, etc. */}
                     </Route>
 

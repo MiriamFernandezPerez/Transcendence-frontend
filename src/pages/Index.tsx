@@ -1,46 +1,77 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-// import nexusIcon from '../assets/NexusNineIcon.png';
-import Footer from '../components/Footer';
-import LandingNavbar from '../components/LandingNavbar';
-import Separator from '../components/Separator';
+/* Icons */
+import { FaUserFriends, FaUser, FaHistory } from "react-icons/fa";
+import { GiCardPlay } from "react-icons/gi";
 
-const Landing = () => {
-	const { t, i18n } = useTranslation();
-	const [isMenuOpen, setIsMenuOpen] = useState(false); //falta BBDD
+/* Layouts and Components */
+import DashboardLayout from '../components/layouts/DashboardLayout';
+import DashboardCard from '../components/ui/DashboardCard';
+import { Link, useNavigate } from 'react-router-dom';
 
-	return (
-		<div className="min-h-screen bg-dark-900 text-white font-sans overflow-x-hidden flex flex-col relative">
+const Index = () => {
+    const { t } = useTranslation();
+	const navigate = useNavigate();
+    
+    // Simulación de usuario
+    const user = { username: "Miriam" }; 
 
-			{/* Two Lines to separate NavBar and Footer */}
-			<Separator />
+    return (
+        <DashboardLayout isCentered={true}>
+            
+            {/* Welcome */}
+            <div className="mb-10">
+                <h1 className="text-2xl md:text-4xl font-bold flex items-center gap-4 text-white drop-shadow-lg justify-center md:justify-start">
+                    <span className="text-2xl md:text-4xl">👋</span> 
+                    {t('dashboard.hello')}, <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-slate-400">{user.username}</span>
+                </h1>
+                <p className="text-slate-400 mt-2 ml-1 text-lg text-center md:text-start md:justify-start">{t('dashboard.ready')}</p>
+            </div>
 
-			{/* Navbar */}
-			<LandingNavbar />
+            {/* Grid 2x2 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 animate-fade-in-up">
 
-			{/* Main Content */}
-			<main className="grow flex flex-col items-center justify-center text-center px-4 relative z-10 mt-24">
-				{/* Title Group */}
-				<h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-2 drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-					NEXUS NINE
-				</h1>
-				<h2 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-linear-to-b from-white to-slate-400 mb-8">
-					CARD GAME
-				</h2>
+				<Link to="/game">
+                <DashboardCard 
+                    title={t('dashboard.play')} 
+                    subtitle={t('dashboard.play')}
+                    icon={<GiCardPlay />}
+                    variant="primary"
+                    onClick={() => navigate('/game')}
+				/>
+				</Link>
 
-				{/* Subtitle */}
-				<p className="text-slate-400 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
-					{t('landing.subtitle')}
-				</p>
+				<Link to="/friends">
+                <DashboardCard 
+                    title={t('dashboard.friends')}
+					/* TODO Cambiar 4 por número real de amigos online */
+                    subtitle="Online: 4"
+                    icon={<FaUserFriends />}
+                    onClick={() => navigate("/friends")}
+                />
+				</Link>
+
+				<Link to="/profile">
+                <DashboardCard 
+                    title={t('dashboard.profile')} 
+                    subtitle={t('dashboard.profile_info')}
+					icon={<FaUser />}
+                    onClick={() => navigate("/profile")}
+                />
+				</Link>
 
 				
-			</main>
+                <DashboardCard 
+                    title={t('dashboard.history')} 
+                    subtitle={t('dashboard.history_info')}
+                    icon={<FaHistory />}
+                    onClick={() => navigate("/history")}
+                />
+				
 
-			{/* Footer */}
-			<Footer />
-		</div>
-	);
+            </div>
+
+        </DashboardLayout>
+    );
 };
 
-export default Landing;
+export default Index;
