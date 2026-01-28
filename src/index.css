@@ -10,7 +10,7 @@
     /* Backgrounds (Dark Mode) */
     --bg-main: #0f172a;    /* dark-900 */
     --bg-surface: #1e293b; /* dark-800 */
-	--bg-footer: #0d1424; /* footer */
+    --bg-footer: #0d1424; /* footer */
     
     /* Semantic States */
     --color-success: #22c55e; /* green-500 */
@@ -20,8 +20,6 @@
 
 @theme {
     /* 2. CONNECT VARIABLES TO TAILWIND */
-    /* This allows you to continue using bg-brand-500 but now reads the variable */
-    
     --color-brand-400: var(--color-brand-400);
     --color-brand-500: var(--color-brand-500);
     --color-brand-600: var(--color-brand-600);
@@ -29,9 +27,15 @@
     --color-dark-900: var(--bg-main);
     --color-dark-800: var(--bg-surface);
     --color-darker: var(--bg-footer);
+    
+    --color-success: var(--color-success);
+    --color-danger: var(--color-danger);
+    --color-warning: var(--color-warning);
+
     /* Custom Animations */
     --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
     --animate-fade-in-down: fade-in-down 0.8s ease-out forwards;
+    --animate-wave: wave 2.5s infinite;
 
     @keyframes fade-in-up {
         0% { opacity: 0; transform: translateY(20px); }
@@ -41,47 +45,90 @@
         0% { opacity: 0; transform: translateY(-20px); }
         100% { opacity: 1; transform: translateY(0); }
     }
+    @keyframes wave {
+        0% { transform: rotate(0.0deg) }
+        10% { transform: rotate(14.0deg) }
+        20% { transform: rotate(-8.0deg) }
+        30% { transform: rotate(14.0deg) }
+        40% { transform: rotate(-4.0deg) }
+        50% { transform: rotate(10.0deg) }
+        60% { transform: rotate(0.0deg) }
+        100% { transform: rotate(0.0deg) }
+    }
 }
 
-/* 3. REUSABLE COMPONENTS (HTML CLEANUP) */
+/* 3. REUSABLE COMPONENTS */
 @layer components {
     
-    /* Base style for glass cards (Friends, Dashboard, Inputs) */
-    .glass-panel {
+    /* --- PANELS --- */
+    /* Estilos compartidos para paneles de cristal */
+    .glass-panel, .glass-panel-hover {
         @apply bg-dark-800/40 backdrop-blur-md border border-white/5 rounded-xl transition-all duration-300;
     }
 
+    /* Solo el efecto hover */
     .glass-panel-hover {
         @apply hover:bg-dark-800/80 hover:border-brand-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)];
     }
 
-    /* Standard form inputs */
+    .card-primary-glow {
+        @apply bg-gradient-to-r from-brand-600 to-brand-500 border-brand-400/50 shadow-[0_0_25px_rgba(59,130,246,0.4)] hover:shadow-[0_0_35px_rgba(59,130,246,0.6)];
+    }
+
+    /* --- FORMS --- */
     .input-nexus {
         @apply w-full px-4 py-3 rounded-xl bg-slate-600 border border-white/10 text-white placeholder-slate-300 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all shadow-lg;
     }
 
-    /* Action Buttons */
+    /* --- BUTTONS --- */
     .btn-icon {
         @apply p-3 rounded-lg transition-all duration-200 flex items-center justify-center;
     }
 
-    /* Primary Button (Blue - Invite/Play) */
-    .btn-primary {
-        @apply bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-500/20 hover:shadow-brand-500/40 hover:-translate-y-0.5;
+    /* SOLUCIÓN: Agrupamos los selectores para compartir estilos base sin usar @apply btn-primary */
+    .btn-primary, 
+    .btn-primary-full {
+        @apply bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-500/20 hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all duration-200;
     }
 
-    /* Secondary Button (Border - Profile) */
+    /* Estilos específicos para el botón full width */
+    .btn-primary-full {
+        @apply w-full py-3.5 px-4 font-bold rounded-xl transform hover:scale-[1.02];
+    }
+
     .btn-secondary {
-        @apply border border-brand-500/30 text-brand-400 hover:bg-brand-500/10 hover:border-brand-500 hover:text-white;
+        @apply border border-brand-500/30 text-brand-400 hover:bg-brand-500/10 hover:border-brand-500 hover:text-white transition-all duration-200;
     }
 
-    /* Danger Button (Red - Delete) */
     .btn-danger {
-        @apply text-slate-600 hover:bg-red-500/10 hover:text-red-500;
+        @apply text-slate-600 hover:bg-red-500/10 hover:text-red-500 transition-all duration-200;
     }
 
-    /* Disabled Button */
     .btn-disabled {
         @apply bg-white/5 text-slate-600 cursor-not-allowed border border-white/5;
+    }
+
+    /* --- NAVIGATION --- */
+    /* Desktop */
+    .nav-link-desktop {
+        @apply text-slate-300 hover:text-white transition-colors hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.5)];
+    }
+    
+    .nav-link-desktop-active {
+        @apply text-white font-semibold relative py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-brand-500 after:shadow-[0_0_10px_#3B82F6];
+    }
+
+    /* Mobile */
+    .nav-item-mobile {
+        @apply p-3 rounded-lg hover:bg-white/5 text-slate-300 text-center transition-colors block w-full;
+    }
+
+    .nav-item-mobile-active {
+        @apply p-3 rounded-lg bg-brand-500 text-white font-medium text-center shadow-lg shadow-brand-500/20 block w-full;
+    }
+    
+    /* Text Gradient helper */
+    .text-gradient-nexus {
+        @apply text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400;
     }
 }

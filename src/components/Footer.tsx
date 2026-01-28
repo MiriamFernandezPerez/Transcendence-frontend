@@ -10,7 +10,7 @@ const Footer = ({ className = "" }: FooterProps) => {
     const { t } = useTranslation();
 
     return (
-        <footer className={`fixed bottom-0 left-0 w-full py-6 text-center text-xs md:text-sm text-slate-600 bg-darker z-40 ${className}`}>
+        <footer className={`fixed bottom-0 left-0 w-full realtive py-6 text-center text-xs md:text-sm text-slate-600  bg-darker z-40 ${className}`}>
         
 
             <div className="relative z-20">

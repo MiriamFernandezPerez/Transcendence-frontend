@@ -1,11 +1,10 @@
 import React, { useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import Footer from "../components/Footer";
-// import Logo from "../components/Logo";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthContext";
 import AuthLayout from "../components/layouts/AuthLayout";
 import InputGroup from "../components/ui/InputGroup";
+import { validateEmail } from "../utils/validators";
 
 const Login = () => {
     const { t } = useTranslation();
@@ -13,77 +12,45 @@ const Login = () => {
     const navigate = useNavigate();
 
     /* Inputs States */
-    const [formData, setFormData] = useState({
-        email: "",
-        password: ""
-    });
-
-    /* Validation errors state */
-    const [errors, setErrors] = useState({
-        email: "",
-        password: ""
-    });
+    const [formData, setFormData] = useState({ email: "", password: "" });
+    const [errors, setErrors] = useState({ email: "", password: "" });
 
     /* Handle Input Change */
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-
-        if (errors[name as keyof typeof errors]) {
-            setErrors({ ...errors, [name]: "" });
-        }
+        if (errors[name as keyof typeof errors]) setErrors({ ...errors, [name]: "" });
     };
 
     /* Validation Function */
     const validate = (data: typeof formData) => {
-        let isValid = true;
-        let newErrors = { email: "", password: "" };
+        /* Validate email from utility function */ 
+        const emailError = validateEmail(data.email, t);
+        
+        /* Validate password only if is empty, right password will be validated on backend */
+        const passwordError = !data.password ? t("validation.password_required") : "";
 
-        /* Email Validation */
-        if (!data.email) {
-            newErrors.email = t("login.email_required");
-            isValid = false;
-        }
-        /* Simple email regex for validation */
-        else if (!/\S+@\S+\.\S+/.test(data.email)) {
-            newErrors.email = t("login.email_invalid");
-            isValid = false;
-        }
-
-        /* Password Validation */
-        if (!data.password) {
-            newErrors.password = t("login.password_required");
-            isValid = false;
-        }
+        const newErrors = {
+            email: emailError,
+            password: passwordError
+        };
 
         setErrors(newErrors);
-        return isValid;
+        
+        /* Returns true if both are clean */
+        return (!emailError && !passwordError);
     };  
     
     /* Handle Form Submit */
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        const cleanData = { email: formData.email.trim(), password: formData.password };
 
-        /* Trim and toLowerCase on email input */
-        /* Password not trimmed even toLowerCase */
-        const cleanData = {
-            email: formData.email.trim(),
-            password: formData.password
-        };
-
-        /* Validate Inputs Form */
-        if (!validate(cleanData))
-            return;
+        if (!validate(cleanData)) return;
         
         /* SIMULACION DE LOGUEO*/
-        /* En un caso real, aquí se haría la llamada a la API para autenticar al usuario. Mientras no tengo backend simulo un usuario */
-        const mirindaw = {
-            id: '1',
-            username: "mirindaw",
-            email: formData.email
-        };
+        const mirindaw = { id: '1', username: "mirindaw", email: formData.email };
         login(mirindaw);
-        console.log("Usuario logueado:", mirindaw);
         navigate("/index");
     };
 
@@ -91,7 +58,7 @@ const Login = () => {
         <AuthLayout title={t("login.title")} subtitle={t("login.subtitle")}>
             <form className="space-y-4" onSubmit={handleSubmit} noValidate>
                 <InputGroup
-                    label={t("login.email")}
+                    label={t("common.email")}
                     type="email"
                     name="email"
                     placeholder="email@email.com"
@@ -101,7 +68,7 @@ const Login = () => {
                 />
                 
                 <InputGroup
-                    label={t("login.password")}
+                    label={t("common.password")}
                     type="password"
                     name="password"
                     placeholder="••••••••"
@@ -111,8 +78,9 @@ const Login = () => {
                     className="mb-8"
                 />
 
-                <button type="submit" className="w-full py-3.5 px-4 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl shadow-lg transition-transform transform hover:scale-[1.02]">
-                    {t("login.enter")}
+                {/* Arreglado: Se usa la clase definida en CSS */}
+                <button type="submit" className="btn-primary-full">
+                    {t("common.enter")}
                 </button>
             </form>
 
@@ -125,7 +93,7 @@ const Login = () => {
                 <p className="text-slate-400 text-sm">
                     {t("login.no_account")}{' '}
                     <Link to='/register' className="text-brand-500 font-bold hover:underline transition-colors">
-                        {t("login.register")}
+                        {t("common.register")}
                     </Link>
                 </p>
             </div>

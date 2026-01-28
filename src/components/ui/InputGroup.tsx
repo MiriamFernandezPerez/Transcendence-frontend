@@ -6,9 +6,9 @@ interface InputGroupProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const InputGroup = ({ label, error, className, ...props }: InputGroupProps) => {
-  const errorClass = error 
-      ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
-      : 'border-slate-700 focus:border-brand-500 focus:ring-brand-500/20';
+	const errorClass = error 
+	? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
+    : '';
   ;
 
   return (

@@ -10,19 +10,18 @@ interface DashboardCardProps {
 
 const DashboardCard = ({ title, subtitle, icon, onClick, variant = 'secondary' }: DashboardCardProps) => {
     
-    /* Styles */ 
+    /* Common Structure Styles */ 
     const baseStyles = "relative group flex items-center gap-5 p-6 rounded-2xl border transition-all duration-300 transform hover:scale-[1.02] cursor-pointer overflow-hidden";
     
-    /* Styles based on variant */
-    /* Refactored to use brand variables where possible */
-    const styles = variant === 'primary' 
-        ? "bg-gradient-to-r from-brand-600 to-brand-500 border-brand-400/50 shadow-[0_0_25px_rgba(59,130,246,0.4)] hover:shadow-[0_0_35px_rgba(59,130,246,0.6)]"
-        : "glass-panel glass-panel-hover"; // Using reusable classes
+    /* Styles based on variant (Refactored to CSS classes) */
+    const variantStyles = variant === 'primary' 
+        ? "card-primary-glow" 
+        : "glass-panel glass-panel-hover";
 
     const iconColor = variant === 'primary' ? 'text-white' : 'text-brand-500';
 
     return (
-        <button onClick={onClick} className={`${baseStyles} ${styles} text-left w-full h-32 md:h-40`}>
+        <button onClick={onClick} className={`${baseStyles} ${variantStyles} text-left w-full h-32 md:h-40`}>
             
             <div className={`p-4 ${iconColor} shrink-0 transition-transform group-hover:scale-110 duration-300`}>
                 {React.cloneElement(icon as React.ReactElement<any>, { size: 50 })}

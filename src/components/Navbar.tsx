@@ -9,31 +9,17 @@ import { MdLogout } from "react-icons/md";
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
 
-const DashboardNavbar = () => {
+const Navbar = () => {
     const { t } = useTranslation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    /* Get current URL path to highlight active link on navbar*/
     const url = useLocation();
-    /* On Desktop */
-    const getPathDesktop = (path: string) => {
-        return (
-            url.pathname === path
-            /* Active Link Style */
-            ? "text-white font-semibold relative py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-brand-500 after:shadow-[0_0_10px_#3B82F6]" 
-            /* Inactive Link Style */
-            : "text-slate-300 hover:text-white transition-colors hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]");
-    }
-    /* On Mobile */
-    const getPathMobile = (path: string) => {
-        return (
-            url.pathname === path
-            /* Active Link Style */
-            ? "p-3 rounded-lg bg-brand-500 text-white font-medium text-center"
-            /* Inactive Link Style */
-            : "p-3 rounded-lg hover:bg-white/5 text-slate-300 text-center transition-colors");
-    }
-    
+
+    /* Helper functions using the restored CSS classes */
+    const getDesktopClass = (path: string) => 
+        url.pathname === path ? "nav-link-desktop-active" : "nav-link-desktop";
+
+    const getMobileClass = (path: string) => 
+        url.pathname === path ? "nav-item-mobile-active" : "nav-item-mobile";
 
     return (
         <nav className="w-full h-24 bg-dark-900/95 backdrop-blur-md fixed top-0 z-50 transition-all duration-300 border-b border-white/5">
@@ -50,22 +36,15 @@ const DashboardNavbar = () => {
                 {/* Desktop Menu */}
                 <div className="hidden lg:flex items-center gap-8">
                     {/* Navigation Links */}
-                    <Link to="/index" className={getPathDesktop("/index")}>
-                        {t('navbar.dashboard')}
-                    </Link>
-                    <Link to="/friends" className={getPathDesktop("/friends")}>
-                        {t('navbar.friends')}
-                    </Link>
-                    <Link to="/profile" className={getPathDesktop("/profile")}>
-                        {t('navbar.profile')}
-                    </Link>
+                    <Link to="/index" className={getDesktopClass("/index")}>{t('navbar.dashboard')}</Link>
+                    <Link to="/friends" className={getDesktopClass("/friends")}>{t('navbar.friends')}</Link>
+                    <Link to="/profile" className={getDesktopClass("/profile")}>{t('navbar.profile')}</Link>
 
                     <div className="h-6 w-px bg-white/10 mx-2"></div>
 
                     {/* System Actions */}
                     <div className="flex items-center gap-4">
                         <LanguageSelector />
-                        
                         <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 hover:bg-white/5 text-slate-300 hover:text-red-400 transition-all text-sm font-medium group">
                             <MdLogout className="group-hover:-translate-x-1 transition-transform" /> 
                             {t('navbar.logout')}
@@ -82,21 +61,19 @@ const DashboardNavbar = () => {
             {/* Mobile Menu Overlay */}
             {isMenuOpen && (
                 <div className="lg:hidden absolute top-24 left-0 w-full bg-dark-900 border-b border-white/10 p-4 flex flex-col gap-2 shadow-2xl animate-fade-in-down">
-                    <Link to="/index" className={getPathMobile("/index")} onClick={() => setIsMenuOpen(false)}>
+                    <Link to="/index" className={getMobileClass("/index")} onClick={() => setIsMenuOpen(false)}>
                         {t('navbar.dashboard')}
                     </Link>
-                    
-                    <Link to="/friends" className={getPathMobile("/friends")} onClick={() => setIsMenuOpen(false)}>
+                    <Link to="/friends" className={getMobileClass("/friends")} onClick={() => setIsMenuOpen(false)}>
                         {t('navbar.friends')}
                     </Link>
-                    
-                    <Link to="/profile" className={getPathMobile("/profile")} onClick={() => setIsMenuOpen(false)}>
+                    <Link to="/profile" className={getMobileClass("/profile")} onClick={() => setIsMenuOpen(false)}>
                         {t('navbar.profile')}
                     </Link>
                     
                     <div className="h-px bg-white/10 my-2"></div>
                     
-                    <button className="p-1 w-full text-center text-red-400 hover:bg-red-500/10 rounded-lg flex items-center justify-center gap-2 transition-colors">
+                    <button className="p-3 w-full text-center text-red-400 hover:bg-red-500/10 rounded-lg flex items-center justify-center gap-2 transition-colors">
                         <MdLogout /> {t('navbar.logout')}
                     </button>
 
@@ -109,4 +86,4 @@ const DashboardNavbar = () => {
     );
 };
 
-export default DashboardNavbar;
+export default Navbar;
