@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { FaUserFriends, FaUser, FaHistory } from "react-icons/fa";
+import { FaUserFriends, FaUser, FaTrophy } from "react-icons/fa";
 import { GiCardPlay } from "react-icons/gi";
 import DashboardLayout from '../components/layouts/DashboardLayout';
 import DashboardCard from '../components/ui/DashboardCard';
@@ -50,7 +50,7 @@ const Index = () => {
                     {/* Using CSS utility for gradient */}
                     {t('dashboard.hello')}, <span className="text-gradient-nexus">{user.username}</span>
                 </h1>
-                <p className="text-slate-400 mt-2 ml-1 text-lg text-center md:text-start md:justify-start">{t('dashboard.ready')}</p>
+                <p className="text-slate-400 my-2 ml-1 text-lg text-center md:text-start md:justify-start">{t('dashboard.ready')}</p>
             </div>
 
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 animate-fade-in-up">
@@ -87,10 +87,10 @@ const Index = () => {
                 </Link>
 
                 <DashboardCard 
-                    title={t('dashboard.history')} 
-                    subtitle={t('dashboard.history_info')}
-                    icon={<FaHistory />}
-                    onClick={() => navigate("/history")}
+                    title={t('dashboard.leaderboard')} 
+                    subtitle={t('dashboard.leaderboard_info')}
+                    icon={<FaTrophy />}
+                    onClick={() => navigate("/leaderboard")}
                 />
             </div>
         </DashboardLayout>

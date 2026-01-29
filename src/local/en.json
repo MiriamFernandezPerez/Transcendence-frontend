@@ -67,6 +67,8 @@
   "navbar": {
     "dashboard": "Dashboard",
     "friends": "Friends",
+    "leaderboard": "Leaderboard", 
+    "chat": "Chat",
     "profile": "Profile",
     "logout": "Logout"
   },
@@ -77,8 +79,9 @@
     "friends": "Friends",
     "profile": "Profile",
     "profile_info": "View your profile",
-    "history": "History",
-    "history_info": "Match history"
+    "leaderboard": "Leaderboard",
+    "leaderboard_info": "Top players ranking",
+	"history": "Match History"
   },
   "friends": {
     "title": "Friends List",
@@ -102,7 +105,15 @@
     "no_stats": "No statistics available.",
     "edit_profile": "Edit Profile",
     "save_changes": "Save Changes",
-    "changes_saved": "Profile changes saved."
+    "changes_saved": "Profile changes saved.",
+	"result": "Result",
+	"opponent": "Opponent",
+	"score": "Score",
+	"date": "Date",
+	"no_history": "No match history available.",
+	"error_loading": "Error loading profile data.",
+	"error_msg": "There was an error loading the profile or network issue.",
+	"try_again": "Try Again"
   },
   "privacy": {
     "1": "Introduction",

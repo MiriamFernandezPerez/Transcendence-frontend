@@ -5,6 +5,7 @@ import FriendCard from '../components/ui/FriendCard';
 import { useEffect, useState } from 'react';
 import ConfirmModal from '../components/ConfirmModal';
 import { useNavigate } from 'react-router-dom';
+import LoadingState from '../components/ui/LoadingState';
 
 /* Friend data structure */
 interface FriendData {
@@ -88,7 +89,7 @@ const Friends = () => {
             <div className="max-w-5xl mx-auto w-full animate-fade-in-up">
                 
                 {/* Header + Search */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-10 border-b border-white/5 pb-8">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-white/5 pb-8">
                     
                     {/* Title */}
                     <div className="text-center md:text-left">
@@ -110,13 +111,12 @@ const Friends = () => {
 
                 {/* FRIENDS GRID */}
                 {/* Conditional Render: Loading or Friends List */}
-                {isLoading ? (
-                    <div className="text-center py-20 text-slate-500 animate-pulse">
-                        Cargando amigos...
-                    </div>
+                
+				{isLoading ? (
+                    <LoadingState message={t('common.loading')} />
                 ) : (
                     /* Dinamic Friend Grid */
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 pb-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 py-8">
                         {friendsList.length > 0 ? (
 							/* Mapping over friendsList to render FriendCard components */
                             friendsList.map((friend) => (

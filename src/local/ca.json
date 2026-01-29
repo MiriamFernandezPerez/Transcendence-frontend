@@ -66,6 +66,8 @@
   "navbar": {
     "dashboard": "Tauler",
     "friends": "Amics",
+    "leaderboard": "Classificació", 
+    "chat": "Xat",
     "profile": "Perfil",
     "logout": "Tancar sessió"
   },
@@ -76,8 +78,9 @@
     "friends": "Amics",
     "profile": "Perfil",
     "profile_info": "Veure el teu perfil",
-    "history": "Historial",
-    "history_info": "Historial de partides"
+    "leaderboard": "Classificació",
+    "leaderboard_info": "Rànquing dels millors jugadors",
+	"history": "Historial de partides"
   },
   "friends": {
     "title": "Llista d'amics",
@@ -101,7 +104,15 @@
     "no_stats": "No hi ha estadístiques disponibles.",
     "edit_profile": "Editar perfil",
     "save_changes": "Desar canvis",
-    "changes_saved": "Canvis al perfil desats."
+    "changes_saved": "Canvis al perfil desats.",
+	"result": "Resultat",
+	"opponent": "Oponent",
+	"score": "Puntuació",
+	"date": "Data",
+	"no_history": "No hi ha historial de partides disponible.",
+	"error_loading": "Error en carregar les dades del perfil.",
+	"error_msg": "Hi ha hagut un error en carregar el perfil o un problema de xarxa.",
+	"try_again": "Torna-ho a intentar"
   },
   "privacy": {
     "1": "Introducció",

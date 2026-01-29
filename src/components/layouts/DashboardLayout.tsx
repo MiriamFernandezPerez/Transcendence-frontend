@@ -11,8 +11,8 @@ const DashboardLayout = ({ children, isCentered = false }: DashboardLayoutProps)
     return (
         <div className={`
             min-h-screen w-full bg-dark-900 text-white font-sans overflow-hidden flex flex-col relative
-            pt-28            
-            ${isCentered ? 'md:pt-0' : 'md:pt-28'}
+            pt-30            
+            ${isCentered ? 'md:pt-0' : 'md:pt-30'}
         `}>
 
             <Navbar />

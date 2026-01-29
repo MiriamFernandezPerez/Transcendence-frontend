@@ -22,6 +22,7 @@ const Navbar = () => {
         <nav className="w-full h-24 bg-dark-900/95 backdrop-blur-md fixed top-0 z-50 transition-all duration-300 border-b border-white/5">
             <div className="w-full h-full flex justify-between items-center px-6 md:px-12">
 
+                {/* Logo */}
                 <Link to="/index" className="flex items-center gap-3 group focus:outline-none select-none">
                     <div className="p-1.5 bg-dark-800/50 rounded-lg border border-white/10 group-hover:border-brand-500/50 transition-colors">
                         <Logo className="w-8 h-8" />
@@ -29,11 +30,25 @@ const Navbar = () => {
                     <span className="font-bold text-lg tracking-wider hidden md:block">NEXUS NINE</span>
                 </Link>
 
-                {/* Desktop Menu */}
+                {/* Desktop Menu - AHORA CON CHAT Y LEADERBOARD */}
                 <div className="hidden lg:flex items-center gap-8">
                     <Link to="/index" className={getDesktopClass("/index")}>{t('navbar.dashboard')}</Link>
-                    <Link to="/friends" className={getDesktopClass("/friends")}>{t('navbar.friends')}</Link>
-                    <Link to="/profile" className={getDesktopClass("/profile")}>{t('navbar.profile')}</Link>
+                    
+					<Link to="/friends" className={getDesktopClass("/friends")}>
+						{t('navbar.friends')}
+					</Link>
+
+					<Link to="/profile" className={getDesktopClass("/profile")}>
+						{t('navbar.profile')}
+					</Link>
+
+                    <Link to="/leaderboard" className={`flex items-center gap-2 ${getDesktopClass("/leaderboard")}`}>
+                        {t('navbar.leaderboard')}
+                    </Link>
+                                  
+                    <Link to="/chat" className={`flex items-center gap-2 ${getDesktopClass("/chat")}`}>
+                        {t('navbar.chat')}
+                    </Link>
 
                     <div className="h-6 w-px bg-white/10 mx-2"></div>
 
@@ -56,7 +71,9 @@ const Navbar = () => {
             {isMenuOpen && (
                 <div className="lg:hidden absolute top-24 left-0 w-full bg-dark-900 border-b border-white/10 p-4 flex flex-col gap-2 shadow-2xl animate-fade-in-down">
                     <Link to="/index" className={getMobileClass("/index")} onClick={() => setIsMenuOpen(false)}>{t('navbar.dashboard')}</Link>
+                    <Link to="/leaderboard" className={getMobileClass("/leaderboard")} onClick={() => setIsMenuOpen(false)}>{t('navbar.leaderboard')}</Link>
                     <Link to="/friends" className={getMobileClass("/friends")} onClick={() => setIsMenuOpen(false)}>{t('navbar.friends')}</Link>
+                    <Link to="/chat" className={getMobileClass("/chat")} onClick={() => setIsMenuOpen(false)}>{t('navbar.chat')}</Link>
                     <Link to="/profile" className={getMobileClass("/profile")} onClick={() => setIsMenuOpen(false)}>{t('navbar.profile')}</Link>
                     
                     <div className="h-px bg-white/10 my-2"></div>

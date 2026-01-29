@@ -66,6 +66,8 @@
   "navbar": {
     "dashboard": "Tablero",
     "friends": "Amigos",
+    "leaderboard": "Clasificación", 
+    "chat": "Chat",
     "profile": "Perfil",
     "logout": "Cerrar sesión"
   },
@@ -76,8 +78,9 @@
     "friends": "Amigos",
     "profile": "Perfil",
     "profile_info": "Ver tu perfil",
-    "history": "Historial",
-    "history_info": "Historial de partidas"
+    "leaderboard": "Clasificación",
+    "leaderboard_info": "Ranking de los mejores jugadores", 
+	"history": "Historial de partidas"
   },
   "friends": {
     "title": "Lista de amigos",
@@ -101,7 +104,15 @@
     "no_stats": "No hay estadísticas disponibles.",
     "edit_profile": "Editar perfil",
     "save_changes": "Guardar cambios",
-    "changes_saved": "Cambios en el perfil guardados."
+    "changes_saved": "Cambios en el perfil guardados.",
+	"result": "Resultado",
+	"opponent": "Oponente",
+	"score": "Puntuación",
+	"date": "Fecha",
+	"no_history": "No hay historial de partidas disponible.",
+	"error_loading": "Error al cargar los datos del perfil.",
+	"error_msg": "Hubo un error al cargar el perfil o un problema de red.",
+	"try_again": "Intentar de nuevo"
   },
   "privacy": {
     "1": "Introducción",
