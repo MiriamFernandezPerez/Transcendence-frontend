@@ -61,6 +61,7 @@
     "enter": "Change Password",
     "success": "Password changed for:",
     "email_registered": "The email is in the database.",
+	"processing": "Processing...",
     "back_login": "Redirecting to Login..."
   },
   "navbar": {
@@ -81,7 +82,12 @@
   },
   "friends": {
     "title": "Friends List",
-    "search_placeholder": "Enter username to add"
+    "search_placeholder": "Enter username to add",
+	"no_friends": "You have no friends added yet.",
+	"remove_friend": "Remove Friend",
+	"remove_alert": "Are you sure you want to remove this friend?. This action cannot be undone.",
+	"accept": "Accept",
+	"decline": "Decline"
   },
   "profile": {
     "title": "User Profile",

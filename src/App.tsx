@@ -9,6 +9,7 @@ import AuthProvider from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import ResetPassword from './pages/ResetPassword';
 import Friends from './pages/Friends';
+import Profile from './pages/Profile';
 
 function App() {
 	return (
@@ -39,7 +40,12 @@ function App() {
 					<Route element={<ProtectedRoute />}>
                         <Route path="/index" element={<Index />} />
 						<Route path="/friends" element={<Friends />} />
-                        {/* Aquí irán /profile, /game, /chat, etc. */}
+						{/*Route to profile without parameters */}
+    					<Route path="/profile" element={<Profile />} />
+    
+						{/* Route to view OTHERS (the :username is the variable) */}
+						<Route path="/profile/:username" element={<Profile />} />
+                        {/* Aquí irán /game, /chat, etc. */}
                     </Route>
 
 				</Routes>

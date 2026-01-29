@@ -11,34 +11,24 @@ const DashboardLayout = ({ children, isCentered = false }: DashboardLayoutProps)
     return (
         <div className={`
             min-h-screen w-full bg-dark-900 text-white font-sans overflow-hidden flex flex-col relative
-            
-            /* LÓGICA DE PADDING SUPERIOR (La clave del arreglo) */
-            /* 1. Móvil: Siempre pt-28 para salvar el Navbar */
-            pt-28
-            
-            /* 2. Desktop (md): Depende de isCentered */
-            /* Si está centrado (Index), quitamos padding (pt-0) para que el justify-center use toda la pantalla */
-            /* Si NO está centrado (Friends), forzamos pt-28 para que empiece debajo del Navbar */
+            pt-28            
             ${isCentered ? 'md:pt-0' : 'md:pt-28'}
         `}>
 
             <Navbar />
 
             {/* Main Content */}
-            <main className={`
-                flex-1 px-4 sm:px-6 relative z-10 flex flex-col 
-                /* Ajuste de altura mínima: Restamos navbar solo si hay padding, si no, pantalla completa */
+            <main className={`flex-1 px-6 sm:px-6 relative z-10 flex flex-col 
                 ${isCentered ? 'min-h-screen' : 'min-h-[calc(100vh-112px)]'}
                 
-                /* Alineación del contenido */
                 ${isCentered 
-                    /* Mobile: Arriba / Desktop: Centro absoluto */
+                    /* Mobile: Up / Desktop: Center */
                     ? 'justify-start md:justify-center items-center' 
-                    /* Siempre Arriba (Friends, Profile...) */
+                    /* Always Up (Friends, Profile...) */
                     : 'justify-start items-stretch'                  
                 }
             `}>
-                <div className="max-w-7xl mx-auto w-full">
+                <div className="max-w-5xl mx-auto w-full">
                     {children}
                 </div>
             </main>

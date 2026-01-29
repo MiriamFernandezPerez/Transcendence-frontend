@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import LandingLayout from '../components/layouts/LandingLayout';
 import LandingNavbar from '../components/LandingNavbar';
 import Separator from '../components/Separator';
 
@@ -9,12 +10,12 @@ const Landing = () => {
 
     return (
         /* Main Container */
-        <main className="h-screen w-full bg-dark-900 text-white font-sans overflow-hidden flex flex-col relative">
+        <LandingLayout>
 
             {/* Decorative Element */}
             <Separator />
 
-            {/* Navbar */}
+            {/* Landing Navbar */}
             <LandingNavbar />
 
             {/* Main Content */}
@@ -50,7 +51,7 @@ const Landing = () => {
             <div className="relative z-20">
                 <Footer />
             </div>
-        </main>
+        </LandingLayout>
     );
 };
 

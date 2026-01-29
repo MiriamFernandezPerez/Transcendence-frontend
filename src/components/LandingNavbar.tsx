@@ -14,17 +14,14 @@ const LandingNavbar = () => {
         <nav className="w-full h-24 bg-dark-900/95 backdrop-blur-md fixed top-0 z-50 transition-all duration-300 border-b border-white/5">
             <div className="w-full h-full flex justify-between items-center px-6 md:px-12">
                 
-                {/* Logo Section */}
-                <Link to="/" className="flex items-center gap-3 group">
+                <Link to="/" className="flex items-center gap-3 group focus:outline-none select-none">
                     <Logo className="w-8 h-8" />
                     <span className="font-bold text-lg tracking-wide hidden md:block group-hover:text-brand-500 transition-colors">NEXUS NINE</span>
                 </Link>
 
-                {/* Desktop Menu */}
                 <div className="hidden lg:flex items-center gap-6">
                     <LanguageSelector />
                     <div className="h-4 w-px bg-slate-700"></div>
-                    {/* Using restored nav classes */}
                     <Link to="/" className="nav-link-desktop-active">{t('common.home')}</Link>
                     <span className="text-slate-600">|</span>
                     <Link to="/login" className="nav-link-desktop">{t('common.login')}</Link>
@@ -32,27 +29,16 @@ const LandingNavbar = () => {
                     <Link to="/register" className="nav-link-desktop">{t('common.register')}</Link>
                 </div>
 
-                {/* Mobile Menu Button */}
                 <button className="lg:hidden text-slate-300 hover:text-white p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     {isMenuOpen ? <FaXmark size={28} /> : <FaBars size={28} />}
                 </button>
             </div>
 
-            {/* Mobile Menu Overlay */}
             {isMenuOpen && (
                 <div className="lg:hidden absolute top-24 left-0 w-full bg-dark-900 border-b border-white/10 p-4 flex flex-col gap-2 shadow-2xl animate-fade-in-down">
-                    {/* Enlace Inicio explícito para consistencia */}
-                    <Link to="/" className="nav-item-mobile-active" onClick={() => setIsMenuOpen(false)}>
-                        {t('landing.home')}
-                    </Link>
-                    
-                    <Link to="/login" className="nav-item-mobile" onClick={() => setIsMenuOpen(false)}>
-                        {t('landing.login')}
-                    </Link>
-                    
-                    <Link to="/register" className="nav-item-mobile" onClick={() => setIsMenuOpen(false)}>
-                        {t('landing.register')}
-                    </Link>
+                    <Link to="/" className="nav-item-mobile-active" onClick={() => setIsMenuOpen(false)}>{t('common.home')}</Link>
+                    <Link to="/login" className="nav-item-mobile" onClick={() => setIsMenuOpen(false)}>{t('common.login')}</Link>
+                    <Link to="/register" className="nav-item-mobile" onClick={() => setIsMenuOpen(false)}>{t('common.register')}</Link>
 
                     <div className="border-t border-white/10 pt-4 mt-2 flex justify-center">
                         <LanguageSelector />

@@ -4,16 +4,18 @@ import { MdPersonSearch } from "react-icons/md";
 
 interface FriendCardProps {
     username: string;
+	icon: React.ReactNode;
+	avatar?: string;
     variant?: 'online' | 'offline' | 'playing';
+	onInviteClick?: () => void;
     onProfileClick?: () => void;
-    onInviteClick?: () => void;
     onRemoveClick?: () => void;
 }
 
-const FriendCard = ({ username, variant = 'offline', onProfileClick, onInviteClick, onRemoveClick }: FriendCardProps) => {
+const FriendCard = ({ username, icon, avatar, variant = 'offline', onProfileClick, onInviteClick, onRemoveClick }: FriendCardProps) => {
     
     const statusConfig = {
-        online:  { ring: "border-success shadow-[0_0_10px_rgba(34,197,94,0.4)]", text: "text-green-400", label: "En línea" },
+        online:  { ring: "border-success shadow-[0_0_10px_rgba(34,197,94,0.4)]", text: "text-success", label: "En línea" },
         offline: { ring: "border-slate-600", text: "text-slate-500", label: "Desconectado" },
         playing: { ring: "border-brand-500 shadow-[0_0_10px_rgba(59,130,246,0.4)]", text: "text-brand-400", label: "Jugando..." }
     };
@@ -28,17 +30,20 @@ const FriendCard = ({ username, variant = 'offline', onProfileClick, onInviteCli
             <div className="flex items-center gap-4 w-full md:w-auto">
                 <div className={`relative p-0.5 rounded-full border-2 ${currentStatus.ring} transition-all duration-300 shrink-0`}>
                     <div className="w-12 h-12 bg-dark-900 rounded-full flex items-center justify-center text-slate-300">
-                        <FaUser size={22} />
+                        {avatar ? <img src={avatar} alt={`${username}'s avatar`} className="w-12 h-12 rounded-full object-cover" /> : <FaUser size={22} />}
                     </div>
                 </div>
                 <div className="flex flex-col text-left">
                     <h3 className="text-lg font-bold text-white tracking-wide font-sans group-hover:text-brand-400 transition-colors">
                         {username}
                     </h3>
-                    <span className={`text-xs uppercase tracking-wider font-bold ${currentStatus.text}`}>
-                        {currentStatus.label}
-                    </span>
-                </div>
+               	    <span className={`flex flex-inline items-center text-xs uppercase tracking-wider font-bold ${currentStatus.text}`}>
+						<span className="mr-1 text-[10px] opacity-80">
+							{icon}
+						</span>
+						{currentStatus.label}
+                   	</span>
+			    </div>
             </div>
 
             {/* Right: Actions */}

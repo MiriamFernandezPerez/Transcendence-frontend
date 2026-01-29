@@ -1,15 +1,91 @@
 import { useTranslation } from 'react-i18next';
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaCircle } from "react-icons/fa";
 import DashboardLayout from '../components/layouts/DashboardLayout';
 import FriendCard from '../components/ui/FriendCard';
+import { useEffect, useState } from 'react';
+import ConfirmModal from '../components/ConfirmModal';
+import { useNavigate } from 'react-router-dom';
+
+/* Friend data structure */
+interface FriendData {
+   	id: number;
+   	username: string;
+   	status: 'online' | 'offline' | 'playing';
+   	avatar?: string;
+}
 
 const Friends = () => {
     const { t } = useTranslation();
+	const navigate = useNavigate();
+
+	/* State to save friend list */
+    const [friendsList, setFriendsList] = useState<FriendData[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+	/* State for Modal control (null = closed, number = open with ID) */
+    const [friendToDelete, setFriendToDelete] = useState<number | null>(null);
+
+	/* Fetch friends from "API" on component mount */
+	useEffect(() => {
+        /* Simulating `fetch('api/friends')` */
+        const fetchFriends = async () => {
+            setIsLoading(true);
+            
+            /* Simulating network delay */
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            // Fake data that would come from the database
+            const mockDatabaseResponse: FriendData[] = [
+                { id: 1, username: "Miriam", status: "online" },
+                { id: 2, username: "Ivan", status: "playing" },
+                { id: 3, username: "Kevin", status: "online" },
+                { id: 4, username: "David", status: "offline" },
+                { id: 5, username: "Alice_Bot", status: "offline" }
+            ];
+
+            setFriendsList(mockDatabaseResponse);
+            setIsLoading(false);
+        };
+
+        fetchFriends();
+    }, []);
     
+	/* Handlers */
+
+	/* Invite to play*/ 
+    const handleInvite = (username: string) => {
+        console.log(`Invitando a ${username}...`);
+        
+    };
+
+	/* Show Profile*/
+	const handleShowProfile = (username: string) => {
+		console.log(`Mostrando perfil de ${username}...`);
+        navigate(`/profile/${username}`);
+	}
+
+	/* Remove Friend */
+	const confirmRemove = (id: number) => {
+		setFriendToDelete(id);
+	}
+    const handleRemoveFriend = () => {
+		if (friendToDelete === null)
+			return;
+        
+        // Aquí llamaría a la API DELETE await api.delete(`/friends/${friendToDelete}`);
+
+        /* Re-Render to remove friend visually */
+        setFriendsList(prev => prev.filter(friend => friend.id !== friendToDelete));
+		console.log(`Eliminando amigo ID: ${friendToDelete}`);
+
+		/* Close modal */
+        setFriendToDelete(null);
+    };
+
     return (
         <DashboardLayout isCentered={false}>
             
-            <div className="max-w-5xl mx-auto w-full animate-fade-in-up px-4">
+            <div className="max-w-5xl mx-auto w-full animate-fade-in-up">
                 
                 {/* Header + Search */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-10 border-b border-white/5 pb-8">
@@ -17,9 +93,8 @@ const Friends = () => {
                     {/* Title */}
                     <div className="text-center md:text-left">
                         <h1 className="text-4xl font-bold text-white tracking-tight drop-shadow-md">
-                            {t('friends.title')} <span className="text-brand-500 text-2xl align-top ml-1">(4)</span>
+                            {t('friends.title')} <span className="text-brand-500 text-2xl align-center ml-1">({friendsList.length})</span>
                         </h1>
-                        <p className="text-slate-400 text-sm mt-1">Gestiona tus aliados y rivales</p>
                     </div>
 
                     {/* Search */}
@@ -28,45 +103,53 @@ const Friends = () => {
                         <input
                             type="text"
                             placeholder={t('friends.search_placeholder')}
-                            /* Refactor: Use standard input class .input-nexus defined in CSS */
                             className="input-nexus pl-11"
                         />
                     </div>
                 </div>
 
                 {/* FRIENDS GRID */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 pb-20">
-                    
-                    {/* 1. Miriam (Online - The blue play button will be visible) */}
-                    <FriendCard
-                        username="Miriam"
-                        variant="online"
-                        onInviteClick={() => console.log("Invitar a Miriam")}
-                        onProfileClick={() => console.log("Perfil Miriam")}
-                        onRemoveClick={() => console.log("Eliminar Miriam")}
-                    />
-                    
-                    {/* 2. Ivan (Playing - The play button will NOT be available, only profile and delete) */}
-                    <FriendCard
-                        username="Ivan"
-                        variant="playing"
-                        onProfileClick={() => console.log("Perfil Ivan")}
-                        onRemoveClick={() => console.log("Eliminar Ivan")}
-                    />
+                {/* Conditional Render: Loading or Friends List */}
+                {isLoading ? (
+                    <div className="text-center py-20 text-slate-500 animate-pulse">
+                        Cargando amigos...
+                    </div>
+                ) : (
+                    /* Dinamic Friend Grid */
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 pb-20">
+                        {friendsList.length > 0 ? (
+							/* Mapping over friendsList to render FriendCard components */
+                            friendsList.map((friend) => (
+                                <FriendCard
+                                    key={friend.id}
+                                    username={friend.username}
+                                    variant={friend.status}
+                                    icon={<FaCircle />}
+                                    avatar={friend.avatar}
+                                    onInviteClick={() => handleInvite(friend.username)}
+                                    onProfileClick={() => handleShowProfile(friend.username)}
+                                    onRemoveClick={() => confirmRemove(friend.id)}
+                                />
+                            ))
+                        ) : (
+                           <div className="col-span-full text-center py-10 text-slate-500 bg-white/5 rounded-xl border border-white/5 border-dashed">
+                                {t('friends.no_friends')}
+                            </div>
+                        )}
+                    </div>
+                )}
 
-                    {/* 3. Kevin (Online) */}
-                    <FriendCard
-                        username="Kevin"
-                        variant="online"
-                        onInviteClick={() => console.log("Invitar a Kevin")}
-                    />
-
-                    {/* 4. David (Offline) */}
-                    <FriendCard
-                        username="David"
-                        variant="offline"
-                    />
-                </div>
+				{/* Confirm Modal */}
+                <ConfirmModal
+                    isOpen={friendToDelete !== null}
+                    title={t('friends.remove_friend')}
+                    message={t('friends.remove_alert')}
+                    confirmText={t('friends.accept')}
+                    cancelText={t('friends.decline')}
+                    
+                    onConfirm={handleRemoveFriend}
+                    onCancel={() => setFriendToDelete(null)}
+                />
 
             </div>
 

@@ -60,6 +60,7 @@
     "enter": "Cambiar contraseña",
     "success": "Contraseña cambiada para:",
     "email_registered": "El correo electrónico está en la base de datos.",
+	"processing": "Procesando...",
     "back_login": "Redirigiendo a Iniciar sesión..."
   },
   "navbar": {
@@ -80,7 +81,12 @@
   },
   "friends": {
     "title": "Lista de amigos",
-    "search_placeholder": "Introduce el nombre de usuario para agregar"
+    "search_placeholder": "Introduce el nombre de usuario para agregar",
+	"no_friends": "Aún no tienes amigos agregados.",
+	"remove_friend": "Eliminar amigo",
+	"remove_alert": "¿Estás seguro de que quieres eliminar a este amigo? Esta acción no se puede deshacer.",
+	"accept": "Aceptar",
+	"decline": "Cancelar"
   },
   "profile": {
     "title": "Perfil de usuario",

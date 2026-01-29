@@ -60,6 +60,7 @@
     "enter": "Canviar contrasenya",
     "success": "Contrasenya canviada per a:",
     "email_registered": "El correu electrònic està a la base de dades.",
+	"processing": "Processant...",
     "back_login": "Redirigint a Iniciar sessió..."
   },
   "navbar": {
@@ -80,7 +81,12 @@
   },
   "friends": {
     "title": "Llista d'amics",
-    "search_placeholder": "Introdueix el nom d'usuari per afegir"
+    "search_placeholder": "Introdueix el nom d'usuari per afegir",
+	"no_friends": "Encara no tens amics afegits.",
+	"remove_friend": "Eliminar amic",
+	"remove_alert": "Estàs segur que vols eliminar aquest amic? Aquesta acció no es pot desfer.",
+	"accept": "Acceptar",
+	"decline": "Cancel·lar"
   },
   "profile": {
     "title": "Perfil d'usuari",

@@ -108,10 +108,10 @@ const ResetPassword = () => {
                         </div>
                     )}
 
-                    {/* Arreglado: Se usa la clase definida en CSS */}
+                    {/* Uses the class defined in CSS */}
                     <button type="submit" disabled={isLoading} 
                         className={`btn-primary-full ${isLoading ? 'bg-slate-600 cursor-wait' : ''}`}>
-                        {isLoading ? "Procesando..." : isEmailed ? "Cambiar Contraseña" : t("password.enter")}
+                        {isLoading ? t("password.processing") : isEmailed ? t("password.enter") : t("password.enter")}
                     </button>
                 </form>
             )}
