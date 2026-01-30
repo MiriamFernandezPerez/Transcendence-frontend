@@ -6,57 +6,71 @@ import { useEffect, useState } from 'react';
 import ConfirmModal from '../components/ConfirmModal';
 import { useNavigate } from 'react-router-dom';
 import LoadingState from '../components/ui/LoadingState';
-
-/* Friend data structure */
-interface FriendData {
-   	id: number;
-   	username: string;
-   	status: 'online' | 'offline' | 'playing';
-   	avatar?: string;
-}
+import type { UserProfile } from '../models/User';
 
 const Friends = () => {
     const { t } = useTranslation();
 	const navigate = useNavigate();
 
 	/* State to save friend list */
-    const [friendsList, setFriendsList] = useState<FriendData[]>([]);
+    const [friendsList, setFriendsList] = useState<UserProfile[]>([]);
+	// Usar UserProfile en lugar de FriendData cuando tenga la base de datos, usara UserProfile guargado en el models/User.ts
+    // const [friendsList, setFriendsList] = useState<UserProfile[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
 	/* State for Modal control (null = closed, number = open with ID) */
     const [friendToDelete, setFriendToDelete] = useState<number | null>(null);
 
-	/* Fetch friends from "API" on component mount */
+	// Simulacion de fetch para obtener los amigos
 	useEffect(() => {
-        /* Simulating `fetch('api/friends')` */
         const fetchFriends = async () => {
             setIsLoading(true);
             
-            /* Simulating network delay */
+            /* Simulacion de delay */
             await new Promise(resolve => setTimeout(resolve, 500));
 
-            // Fake data that would come from the database
-            const mockDatabaseResponse: FriendData[] = [
-                { id: 1, username: "Miriam", status: "online" },
-                { id: 2, username: "Ivan", status: "playing" },
-                { id: 3, username: "Kevin", status: "online" },
-                { id: 4, username: "David", status: "offline" },
-                { id: 5, username: "Alice_Bot", status: "offline" }
+            // Datos fake que vendrían de la base de datos
+            const mockDatabaseResponse: UserProfile[] = [
+                { id: 1, username: "Miriam", status: "online", stats: { gamesPlayed:0, wins:0, losses:0, winRate:0 } },
+                { id: 2, username: "Ivan", status: "playing", stats: { gamesPlayed:0, wins:0, losses:0, winRate:0 } },
+                { id: 3, username: "Kevin", status: "online", stats: { gamesPlayed:0, wins:0, losses:0, winRate:0 } },
+                { id: 4, username: "David", status: "offline", stats: { gamesPlayed:0, wins:0, losses:0, winRate:0 } },
+                { id: 5, username: "Alice_Bot", status: "offline", stats: { gamesPlayed:0, wins:0, losses:0, winRate:0 } }
             ];
 
+			/* Simulacion de error al cargar la lista de amigos o sin amigos comentando esta línea */
             setFriendsList(mockDatabaseResponse);
+
             setIsLoading(false);
         };
 
         fetchFriends();
     }, []);
+
+	/* Real fetch cuando tenga la BBDD */
+	// useEffect(() => {
+	//     const fetchFriends = async () => {
+	//         setIsLoading(true);
+	//         try {
+	//             const response = await api.get<FriendData[]>('/friends');
+	//             setFriendsList(response.data);
+	//         } catch (error) {
+	//             console.error("Error al cargar la lista de amigos:", error);
+	//             setFriendsList([]); // Vaciar lista en caso de error
+	//         } finally {
+	//             setIsLoading(false);
+	//         }
+	//     };
+	// }, []);
+
+
     
 	/* Handlers */
 
 	/* Invite to play*/ 
     const handleInvite = (username: string) => {
         console.log(`Invitando a ${username}...`);
-        
+        navigate(`/game/`);
     };
 
 	/* Show Profile*/
@@ -146,7 +160,7 @@ const Friends = () => {
                     message={t('friends.remove_alert')}
                     confirmText={t('friends.accept')}
                     cancelText={t('friends.decline')}
-                    
+					isDanger={true}
                     onConfirm={handleRemoveFriend}
                     onCancel={() => setFriendToDelete(null)}
                 />

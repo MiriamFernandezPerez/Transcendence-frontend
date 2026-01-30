@@ -5,14 +5,7 @@ import DashboardLayout from '../components/layouts/DashboardLayout';
 import DashboardCard from '../components/ui/DashboardCard';
 import { Link, useNavigate } from 'react-router-dom';
 import {useEffect, useState } from 'react';
-
-/* Friend data structure */
-interface FriendData {
-   	id: number;
-   	username: string;
-   	status: 'online' | 'offline' | 'playing';
-   	avatar?: string;
-}
+import type { UserProfile } from '../models/User';
 
 const Index = () => {
     const { t } = useTranslation();
@@ -21,25 +14,40 @@ const Index = () => {
     const user = { username: "Miriam" };
 
 	/* State to save friend list */
-	const [friendsList, setFriendsList] = useState<FriendData[]>([]);
+	const [friendsList, setFriendsList] = useState<UserProfile[]>([]);
 
-	/* Fetch friends from "API" on component mount */
+	/* Fetch fake para obtener amigos */
 	useEffect(() => {
-		/* Simulating `fetch('api/friends')` */
+		/* Simulacion de fetch para obtener amigos */
 		const fetchFriends = async () => {
 				
 			/* Simulacion de usuarios eliminar cuando tenga BBDD */
-			const mockDatabaseResponse: FriendData[] = [
-				{ id: 1, username: "Miriam", status: "online" },
-				{ id: 2, username: "Ivan", status: "playing" },
-				{ id: 3, username: "Kevin", status: "online" },
-				{ id: 4, username: "David", status: "offline" },
-				{ id: 5, username: "Alice_Bot", status: "offline" }
+			const mockDatabaseResponse: UserProfile[] = [
+				{ id: 1, username: "Miriam", status: "online", stats: { gamesPlayed:0, wins:0, losses:0, winRate:0 } },
+				{ id: 2, username: "Ivan", status: "playing", stats: { gamesPlayed:0, wins:0, losses:0, winRate:0 } },
+				{ id: 3, username: "Kevin", status: "online", stats: { gamesPlayed:0, wins:0, losses:0, winRate:0 } },
+				{ id: 4, username: "David", status: "offline", stats: { gamesPlayed:0, wins:0, losses:0, winRate:0 } },
+				{ id: 5, username: "Alice_Bot", status: "offline", stats: { gamesPlayed:0, wins:0, losses:0, winRate:0 } }
 			];
 					setFriendsList(mockDatabaseResponse);
 		};
 			fetchFriends();
 	}, []);
+
+	/* Real fetch cuando tenga la BBDD */
+	// useEffect(() => {
+	//     const fetchFriends = async () => {
+	//         try {
+	//             const response = await fetch('/api/friends');
+	//             const data: UserProfile[] = await response.json();
+	//             setFriendsList(data);
+	//         } catch (error) {
+	//             console.error("Error fetching friends:", error);
+	//         }
+	//     };
+	//     fetchFriends();
+	// }, []);
+
 
     return (
         <DashboardLayout isCentered={true}>
