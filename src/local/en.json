@@ -10,7 +10,10 @@
     "confirm_password": "Confirm Password",
     "enter": "Enter",
     "submit": "Submit",
-    "loading": "Loading..."
+    "loading": "Loading...",
+	"avatar": "Avatar",
+	"accept": "Accept",
+	"decline": "Decline"
   },
   "validation": {
     "required": "This field is required.",
@@ -88,9 +91,7 @@
     "search_placeholder": "Enter username to add",
 	"no_friends": "You have no friends added yet.",
 	"remove_friend": "Remove Friend",
-	"remove_alert": "Are you sure you want to remove this friend?. This action cannot be undone.",
-	"accept": "Accept",
-	"decline": "Decline"
+	"remove_alert": "Are you sure you want to remove this friend?. This action cannot be undone."
   },
   "profile": {
     "title": "User Profile",
@@ -114,6 +115,27 @@
 	"error_loading": "Error loading profile data.",
 	"error_msg": "There was an error loading the profile or network issue.",
 	"try_again": "Try Again"
+  },
+  "edit_profile": {
+	"subtitle": "Edit your profile",
+	"choose_avatar": "Or choose one",
+	"avatar_error_file": "Invalid format. Use JPG, PNG, or WEBP.",
+	"avatar_error_size": "The image is too large (Max 5MB).",
+	"bio": "About you",
+	"bio_placeholder": "Tell us something about you...",
+	"language": "Language",
+	"english": "English",
+	"spanish": "Spanish",
+	"catalan": "Català",
+	"security": "Security",
+	"current_password": "Current Password",
+	"new_password": "New Password",
+	"confirm_new_password": "Confirm New Password",
+	"save": "Save Changes",
+	"sure": "Are you sure you want to save these changes?",
+	"saving": "Saving...",
+	"changes_saved": "Profile updated successfully.",
+	"error_saving": "Error saving profile changes."
   },
   "privacy": {
     "1": "Introduction",

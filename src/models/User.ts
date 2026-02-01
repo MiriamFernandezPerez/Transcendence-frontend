@@ -18,6 +18,8 @@ export interface UserProfile {
 	avatar?: string;
 	status?: 'online' | 'offline' | 'playing';
 	stats: UserStats;
+	bio?: string;
+    language?: 'en' | 'es' | 'ca';
 	
 	history?: MatchHistory[];
 	// campos adicionales según sea necesario

@@ -10,7 +10,9 @@
     "confirm_password": "Confirmar contraseña",
     "enter": "Entrar",
     "submit": "Enviar",
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+	"accept": "Aceptar",
+	"decline": "Cancelar"
   },
   "validation": {
     "required": "Este campo es obligatorio.",
@@ -87,9 +89,7 @@
     "search_placeholder": "Introduce el nombre de usuario para agregar",
 	"no_friends": "Aún no tienes amigos agregados.",
 	"remove_friend": "Eliminar amigo",
-	"remove_alert": "¿Estás seguro de que quieres eliminar a este amigo? Esta acción no se puede deshacer.",
-	"accept": "Aceptar",
-	"decline": "Cancelar"
+	"remove_alert": "¿Estás seguro de que quieres eliminar a este amigo? Esta acción no se puede deshacer."
   },
   "profile": {
     "title": "Perfil de usuario",
@@ -113,6 +113,27 @@
 	"error_loading": "Error al cargar los datos del perfil.",
 	"error_msg": "Hubo un error al cargar el perfil o un problema de red.",
 	"try_again": "Intentar de nuevo"
+  },
+  "edit_profile": {
+	"subtitle": "Edita tu perfil",
+	"choose_avatar": "O elige uno",
+	"avatar_error_file": "Formato no válido. Usa JPG, PNG o WEBP.",
+	"avatar_error_size": "La imagen es demasiado grande (Máx 5MB).",
+	"bio": "Acerca de ti",
+	"bio_placeholder": "Cuéntanos algo sobre ti...",
+	"language": "Idioma",
+	"english": "Inglés",
+	"spanish": "Español",
+	"catalan": "Català",
+	"security": "Seguridad",
+	"current_password": "Contraseña actual",
+	"new_password": "Nueva contraseña",
+	"confirm_new_password": "Confirmar nueva contraseña",
+	"save": " Guardar cambios",
+	"sure": "¿Estás seguro de que quieres guardar estos cambios?",
+	"saving": "Guardando...",
+	"changes_saved": "Perfil actualizado con éxito.",
+	"error_saving": "Error al guardar los cambios del perfil."
   },
   "privacy": {
     "1": "Introducción",

@@ -10,7 +10,9 @@
     "confirm_password": "Confirma la contrasenya",
     "enter": "Entrar",
     "submit": "Enviar",
-    "loading": "Carregant..."
+    "loading": "Carregant...",
+	"accept": "Acceptar",
+	"decline": "Cancel·lar"
   },
   "validation": {
     "required": "Aquest camp és obligatori.",
@@ -87,9 +89,7 @@
     "search_placeholder": "Introdueix el nom d'usuari per afegir",
 	"no_friends": "Encara no tens amics afegits.",
 	"remove_friend": "Eliminar amic",
-	"remove_alert": "Estàs segur que vols eliminar aquest amic? Aquesta acció no es pot desfer.",
-	"accept": "Acceptar",
-	"decline": "Cancel·lar"
+	"remove_alert": "Estàs segur que vols eliminar aquest amic? Aquesta acció no es pot desfer."
   },
   "profile": {
     "title": "Perfil d'usuari",
@@ -113,6 +113,27 @@
 	"error_loading": "Error en carregar les dades del perfil.",
 	"error_msg": "Hi ha hagut un error en carregar el perfil o un problema de xarxa.",
 	"try_again": "Torna-ho a intentar"
+  },
+  "edit_profile": {
+	"subtitle": "Edita el teu perfil",
+	"choose_avatar": "O tria un",
+	"avatar_error_file": "Format no vàlid. Usa JPG, PNG o WEBP.",
+	"avatar_error_size": "La imatge és massa gran (Màx 5MB).",
+	"bio": "Sobre tu",
+	"bio_placeholder": "Explica'ns alguna cosa sobre tu...",
+	"language": "Idioma",
+	"english": "Anglès",
+	"spanish": "Espanyol",
+	"catalan": "Català",
+	"security": "Seguretat",
+	"current_password": "Contrasenya actual",
+	"new_password": "Nova contrasenya",
+	"confirm_new_password": "Confirma la nova contrasenya",
+	"save": "Desa els canvis",
+	"sure": "Estàs segur que vols desar aquests canvis?",
+	"saving": "Desant...",
+	"changes_saved": "Perfil actualitzat amb èxit.",
+	"error_saving": "Error en desar els canvis del perfil."
   },
   "privacy": {
     "1": "Introducció",

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FaUser, FaGamepad, FaEdit, FaTrophy, FaExclamationTriangle } from "react-icons/fa";
 import { MdHistory } from "react-icons/md";
@@ -12,7 +12,7 @@ import type { UserProfile } from '../models/User';
 
 const Profile = () => {
 	const { t } = useTranslation();
-	const navigate = useNavigate();
+	
 	/* 1. Get the username from the URL (if any) */
 	const { username } = useParams<{ username: string }>();
 
@@ -48,7 +48,7 @@ const Profile = () => {
 
 			/* MOCK DATA SIMULATION */
 			// If viewing a friend, return friend data. If me, return my data.
-			const targetUser = isOwnProfile ? "Miriam (You)" : username;
+			const targetUser = isOwnProfile ? "Miriam" : username;
 
 			const mockData: UserProfile = {
 				id:1,
@@ -146,9 +146,11 @@ const Profile = () => {
 								{/* Action Buttons */}
 								<div className="flex flex-wrap justify-center md:justify-start gap-3 mt-2">
 									{isOwnProfile ? (
-										<button className="btn-icon btn-secondary px-6 gap-2 text-sm font-bold">
-											<FaEdit /> {t('profile.edit_profile')}
-										</button>
+										<Link to="/edit_profile">
+											<button className="btn-icon btn-secondary px-6 gap-2 text-sm font-bold">
+												<FaEdit /> {t('profile.edit_profile')}
+											</button>
+										</Link>
 									) : (
 										<button className="btn-icon btn-primary px-6 gap-2 text-sm font-bold">
 											<FaGamepad size={20} /> {t('dashboard.play')}

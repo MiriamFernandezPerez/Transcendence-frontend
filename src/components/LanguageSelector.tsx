@@ -12,6 +12,7 @@ const LanguageSelector = ({ className = "" }: LanguageSelectorProps) => {
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);
         /* Save language to LocalStorage */
+		// Guardar en BBDD cuando la tenga
         localStorage.setItem('lang', lng);
     };
 

@@ -158,8 +158,8 @@ const Friends = () => {
                     isOpen={friendToDelete !== null}
                     title={t('friends.remove_friend')}
                     message={t('friends.remove_alert')}
-                    confirmText={t('friends.accept')}
-                    cancelText={t('friends.decline')}
+                    confirmText={t('common.accept')}
+                    cancelText={t('common.decline')}
 					isDanger={true}
                     onConfirm={handleRemoveFriend}
                     onCancel={() => setFriendToDelete(null)}
