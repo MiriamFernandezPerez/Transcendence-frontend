@@ -54,7 +54,7 @@ const Profile = () => {
 				id:1,
 				username: targetUser || "Unknown",
 				email: isOwnProfile ? "miriam@student.42.fr" : undefined,
-				avatar: "https://i.pravatar.cc/150?u=Miriam",
+				avatar: "../../../public/assets/avatars/sorceress.png",
 				stats: {
 					wins: 42,
 					losses: 12,

@@ -48,6 +48,16 @@ const EditProfile = () => {
     
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
+	/* Language dropdown state */
+	const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+
+	/* Language options for  custom select */
+    const languageOptions = [
+        { code: 'en', label: t('edit_profile.english') },
+        { code: 'es', label: t('edit_profile.spanish') },
+        { code: 'ca', label: t('edit_profile.catalan') }
+    ];
+
 	const iconSize = 20;
 
     /* 1. Fetch Data */
@@ -138,7 +148,8 @@ const EditProfile = () => {
         setFormData(prev => prev ? {
             ...prev,
             avatar: presetUrl,
-            avatarFile: undefined // Importante: Limpiamos el File porque ha elegido una URL
+			/* Clean file when user selects a preset */
+            avatarFile: undefined
         } : null);
     };
 
@@ -173,7 +184,7 @@ const EditProfile = () => {
 		// Cuando tenga la BBDD guardaré los datos reales
 		// LÓGICA DE BACKEND (Ahora compilará gracias al Mock y al tipado)
         try {
-            // 1. Tipamos explícitamente el payload para que acepte 'avatar' después
+            // Tipamos explícitamente el payload para que acepte 'avatar' después
             interface UpdatePayload {
                 username: string;
                 bio?: string;
@@ -238,6 +249,20 @@ const EditProfile = () => {
         navigate('/edit_profile');
     };
 
+	/* Specific Handler to Custom Select */
+    const handleLanguageSelect = (langCode: string) => {
+        setFormData(prev => prev ? { 
+            ...prev, 
+            language: langCode as 'en' | 'es' | 'ca' 
+        } : null);
+		/* Close dropdown */
+        setIsLanguageOpen(false); 
+        
+        // Opcional: Si quieres cambio en vivo (preview), descomenta:
+        i18n.changeLanguage(langCode);
+        localStorage.setItem('lang', langCode);
+    };
+
 	/* Simulación de carga */
     if (isLoading) return <DashboardLayout isCentered={true}><LoadingState message={t('common.loading')} /></DashboardLayout>;
 	/* Protección contra formData nulo */
@@ -259,7 +284,7 @@ const EditProfile = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                     
                     {/* --- CARD 1: IDENTIDAD PÚBLICA --- */}
-                    <div className="glass-panel p-6 md:p-8 space-y-8">
+                    <div className="glass-panel p-6 md:p-8 space-y-8 relative z-10">
                         
                         {/* SECCIÓN AVATAR */}
                         <div className="flex flex-col items-center gap-6">
@@ -307,6 +332,8 @@ const EditProfile = () => {
                                     >
                                         <img src={preset} alt={`Avatar ${index}`} className="w-full h-full object-cover" />
                                     </button>
+
+									
                                 ))}
                             </div>
                         </div>
@@ -329,22 +356,65 @@ const EditProfile = () => {
                                 <div className="text-right text-xs text-slate-500">{(formData.bio || "").length}/150</div>
                             </div>
 
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold text-slate-300 ml-1 flex items-center gap-2"><FaGlobe className="text-brand-500" size={iconSize}/> {t('edit_profile.language') || "Idioma"}</label>
-                                <div className="relative">
-                                    <select name="language" value={formData.language} onChange={handleInputChange} className="input-nexus w-full appearance-none cursor-pointer truncate pr-10">
-                                        <option className="bg-slate-800 text-white" value="en">{t('edit_profile.english') }</option>
-                                        <option className="bg-slate-800 text-white" value="es">{t('edit_profile.spanish') }</option>
-                                        <option className="bg-slate-800 text-white" value="ca">{t('edit_profile.catalan') }</option>
-                                    </select>
-                                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500 text-xs"><TiArrowSortedDown size={iconSize}/></div>
-                                </div>
+							{/* Custom Dropdown to select language (input select and option can't be modified CSS styles) */}
+                            <div className="space-y-2 relative">
+                                <label className="text-sm font-bold text-slate-300 ml-1 flex items-center gap-2">
+                                    <FaGlobe className="text-brand-500" size={iconSize}/> {t('edit_profile.language') || "Idioma"}
+                                </label>
+                                
+                                {/* Trigger Button */}
+                                <button
+                                    type="button"
+                                    onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                                    className="input-nexus w-full flex justify-between items-center text-left cursor-pointer focus:ring-1 focus:ring-brand-500 focus:border-brand-500"
+                                >
+                                    <span className="flex items-center gap-2">
+                                        {/* Flag/Text logic */}
+                                        {languageOptions.find(opt => opt.code === formData.language)?.label || formData.language}
+                                    </span>
+                                    <TiArrowSortedDown 
+                                        size={iconSize} 
+                                        className={`text-slate-400 transition-transform duration-300 ${isLanguageOpen ? 'rotate-180' : ''}`}
+                                    />
+                                </button>
+
+                                {/* Dropdown Menu */}
+                                {isLanguageOpen && (
+                                    <div className="absolute z-999 top-full left-0 right-0 mt-2 bg-dark-800 border border-white/10 rounded-xl shadow-xl overflow-hidden animate-fade-in-down backdrop-blur-xl">
+                                        <ul className="py-1">
+                                            {languageOptions.map((option) => (
+                                                <li 
+                                                    key={option.code}
+                                                    onClick={() => handleLanguageSelect(option.code)}
+                                                    className={`px-4 py-3 cursor-pointer transition-colors flex items-center justify-between
+                                                        ${formData.language === option.code 
+                                                            ? 'bg-brand-500/20 text-white font-bold border-l-4 border-brand-500' 
+                                                            : 'text-slate-300 hover:bg-white/5 hover:text-white border-l-4 border-transparent'}
+                                                    `}
+                                                >
+                                                    {option.label}
+                                                    {formData.language === option.code }
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                                
+                                {/* Overlay invisible para cerrar al hacer clic fuera (opcional, mejora UX) */}
+                                {isLanguageOpen && (
+                                    <div 
+                                        className="fixed inset-0 z-40 bg-transparent cursor-default"
+                                        onClick={() => setIsLanguageOpen(false)}
+                                    />
+                                )}
                             </div>
+                            {/* ----------------------------- */}
+
                         </div>
                     </div>
 
                     {/* --- CARD 2: SEGURIDAD --- */}
-                    <div className="glass-panel p-6 md:p-8 space-y-6">
+                    <div className="glass-panel p-6 md:p-8 space-y-6 relative z-0">
                         <h3 className="text-lg font-bold text-white flex items-center gap-2 border-b border-white/5 pb-4">
                             <FaLock className="text-brand-500" size={iconSize}/> {t('edit_profile.security') || "Seguridad"}
                         </h3>
