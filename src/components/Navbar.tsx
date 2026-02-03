@@ -30,7 +30,7 @@ const Navbar = () => {
                     <span className="font-bold text-lg tracking-wider hidden md:block">NEXUS NINE</span>
                 </Link>
 
-                {/* Desktop Menu - AHORA CON CHAT Y LEADERBOARD */}
+                {/* Desktop Menu */}
                 <div className="hidden lg:flex items-center gap-8">
                     <Link to="/index" className={getDesktopClass("/index")}>{t('navbar.dashboard')}</Link>
                     
@@ -42,8 +42,8 @@ const Navbar = () => {
 						{t('navbar.profile')}
 					</Link>
 
-                    <Link to="/leaderboard" className={`flex items-center gap-2 ${getDesktopClass("/leaderboard")}`}>
-                        {t('navbar.leaderboard')}
+                    <Link to="/ranking" className={`flex items-center gap-2 ${getDesktopClass("/ranking")}`}>
+                        {t('navbar.ranking')}
                     </Link>
                                   
                     <Link to="/chat" className={`flex items-center gap-2 ${getDesktopClass("/chat")}`}>
@@ -71,7 +71,7 @@ const Navbar = () => {
             {isMenuOpen && (
                 <div className="lg:hidden absolute top-24 left-0 w-full bg-dark-900 border-b border-white/10 p-4 flex flex-col gap-2 shadow-2xl animate-fade-in-down">
                     <Link to="/index" className={getMobileClass("/index")} onClick={() => setIsMenuOpen(false)}>{t('navbar.dashboard')}</Link>
-                    <Link to="/leaderboard" className={getMobileClass("/leaderboard")} onClick={() => setIsMenuOpen(false)}>{t('navbar.leaderboard')}</Link>
+                    <Link to="/ranking" className={getMobileClass("/ranking")} onClick={() => setIsMenuOpen(false)}>{t('navbar.ranking')}</Link>
                     <Link to="/friends" className={getMobileClass("/friends")} onClick={() => setIsMenuOpen(false)}>{t('navbar.friends')}</Link>
                     <Link to="/chat" className={getMobileClass("/chat")} onClick={() => setIsMenuOpen(false)}>{t('navbar.chat')}</Link>
                     <Link to="/profile" className={getMobileClass("/profile")} onClick={() => setIsMenuOpen(false)}>{t('navbar.profile')}</Link>

@@ -135,6 +135,18 @@
 	"changes_saved": "Perfil actualizado con éxito.",
 	"error_saving": "Error al guardar los cambios del perfil."
   },
+  "ranking": {
+	"title": "Ranking",
+	"subtitle": "Mejores jugadores",
+	"search_player": "Buscar jugador...",
+	"no_ranking": "No hay datos de ranking disponibles.",
+	"position": "Posición",
+	"username": "Nombre de usuario",
+	"you": "TÚ",
+	"trend": "Tendencia",
+	"points": "Puntos"
+	
+  },
   "privacy": {
     "1": "Introducción",
     "1text": "En Nexus Nine, respetamos la privacidad de nuestros usuarios...",

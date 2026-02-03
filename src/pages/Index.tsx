@@ -95,10 +95,10 @@ const Index = () => {
                 </Link>
 
                 <DashboardCard 
-                    title={t('dashboard.leaderboard')} 
-                    subtitle={t('dashboard.leaderboard_info')}
+                    title={t('dashboard.ranking')} 
+                    subtitle={t('dashboard.ranking_info')}
                     icon={<FaTrophy />}
-                    onClick={() => navigate("/leaderboard")}
+                    onClick={() => navigate("/ranking")}
                 />
             </div>
         </DashboardLayout>

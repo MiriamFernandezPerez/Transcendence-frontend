@@ -11,6 +11,7 @@ import ResetPassword from './pages/ResetPassword';
 import Friends from './pages/Friends';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
+import Ranking from './pages/Ranking';
 
 function App() {
 	return (
@@ -47,6 +48,7 @@ function App() {
 						{/* Route to view OTHERS (the :username is the variable) */}
 						<Route path="/profile/:username" element={<Profile />} />
 						<Route path="/edit_profile" element={<EditProfile />} />
+						<Route path="/ranking" element={<Ranking />} />
                         {/* Aquí irán /game, /chat, etc. */}
                     </Route>
 

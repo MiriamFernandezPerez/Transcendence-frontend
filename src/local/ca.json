@@ -135,6 +135,18 @@
 	"changes_saved": "Perfil actualitzat amb èxit.",
 	"error_saving": "Error en desar els canvis del perfil."
   },
+  "ranking": {
+	"title": "Rànquing",
+	"subtitle": "Millors jugadors",
+	"search_player": "Cerca jugador...",
+	"no_ranking": "No hi ha dades de rànquing disponibles.",
+	"position": "Posició",
+	"username": "Nom d'usuari",
+	"you": "TU",
+	"trend": "Tendència",
+	"points": "Punts"
+	
+  },
   "privacy": {
     "1": "Introducció",
     "1text": "A Nexus Nine, respectem la privacitat dels nostres usuaris...",

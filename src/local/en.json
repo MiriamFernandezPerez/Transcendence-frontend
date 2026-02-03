@@ -70,7 +70,7 @@
   "navbar": {
     "dashboard": "Dashboard",
     "friends": "Friends",
-    "leaderboard": "Leaderboard", 
+    "ranking": "Ranking", 
     "chat": "Chat",
     "profile": "Profile",
     "logout": "Logout"
@@ -81,9 +81,9 @@
     "play": "Play Now",
     "friends": "Friends",
     "profile": "Profile",
+	"ranking": "Ranking", 
     "profile_info": "View your profile",
-    "leaderboard": "Leaderboard",
-    "leaderboard_info": "Top players ranking",
+    "ranking_info": "Top players ranking",
 	"history": "Match History"
   },
   "friends": {
@@ -136,6 +136,18 @@
 	"saving": "Saving...",
 	"changes_saved": "Profile updated successfully.",
 	"error_saving": "Error saving profile changes."
+  },
+  "ranking": {
+	"title": "Ranking",
+	"subtitle": "Top players",
+	"search_player": "Search player...",
+	"no_ranking": "No ranking data available.",
+	"position": "Position",
+	"username": "Username",
+	"you": "YOU",
+	"trend": "Trend",
+	"points": "Points"
+	
   },
   "privacy": {
     "1": "Introduction",
