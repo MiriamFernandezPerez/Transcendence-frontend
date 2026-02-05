@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import AuthLayout from "../components/layouts/AuthLayout";
 import InputGroup from "../components/ui/InputGroup";
 import { validateEmail } from "../utils/validators";
+import axios from "axios";
 
 const Login = () => {
     const { t } = useTranslation();
@@ -14,6 +15,8 @@ const Login = () => {
     /* Inputs States */
     const [formData, setFormData] = useState({ email: "", password: "" });
     const [errors, setErrors] = useState({ email: "", password: "" });
+	/* State to handle login errors from backend "incorrect credentials". */
+	const [loginError, setLoginError] = useState("");
 
     /* Handle Input Change */
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,21 +45,48 @@ const Login = () => {
     };  
     
     /* Handle Form Submit */
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => { // Hacemos la función async
         e.preventDefault();
+        setLoginError(""); // Limpiar errores previos
         const cleanData = { email: formData.email.trim(), password: formData.password };
 
         if (!validate(cleanData)) return;
         
-        /* SIMULACION DE LOGUEO*/
-        const mirindaw = { id: '1', username: "mirindaw", email: formData.email };
-        login(mirindaw);
-        navigate("/index");
+        try {
+            // Real login calling to context. This function now returns a promise, so we await it to catch errors properly.
+            await login( cleanData); 
+            navigate("/index"); // If no error is thrown, redirect
+        } catch (error) {
+        // IMPROVED ERROR HANDLING
+        if (axios.isAxiosError(error)) {
+            if (!error.response) {
+                // Case 1: No response (Server down / Network error)
+                setLoginError(t("errors.no_response"));
+            } else if (error.response.status === 401 || error.response.status === 422) {
+                // Case 2: Server responded with invalid data
+                setLoginError(t("errors.invalid_credentials"));
+            } else if (error.response.status === 419) {
+                // Case 3: CSRF error (Expired token), reloading usually fixes it
+                setLoginError(t("errors.csrf_error"));
+            } else {
+                // Case 4: Other errors (500, etc)
+                setLoginError(t("errors.unexpected"));
+            }
+        } else {
+            setLoginError(t("errors.unknown"));
+        }
+    }
     };
 
     return (
         <AuthLayout title={t("login.title")} subtitle={t("login.subtitle")}>
             <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+				{/* General error if login fails */}
+                {loginError && (
+                    <div className="mb-4 p-3 bg-danger/10 border border-danger/20 text-danger rounded text-sm text-center">
+                        {loginError}
+                    </div>
+                )}
                 <InputGroup
                     label={t("common.email")}
                     type="email"

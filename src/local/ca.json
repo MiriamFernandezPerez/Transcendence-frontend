@@ -32,6 +32,13 @@
     "passwords_match": "Les contrasenyes han de coincidir.",
     "invalid_file": "Fitxer no vàlid. Si us plau, puja un fitxer d'imatge (jpg, png)."
   },
+  "errors": {
+	"no_response": " No es pot connectar amb el servidor. Si us plau, intenta-ho més tard.",
+	"invalid_credentials": "Nom d'usuari o contrasenya incorrectes.",
+	"csrf_error": "La sessió ha expirat. Si us plau, recarrega la pàgina.",
+	"unexpected": "Ha hagut un error inesperat. Si us plau, intenta-ho de nou.",
+	"unknown": "Ha hagut un error desconegut. Si us plau, intenta-ho de nou." 
+  },
   "landing": {
     "title": "TRANSCENDENCE CARD GAME",
     "subtitle": "Juga partides en línia amb els teus amics. Puja al rànquing i competeix en tornejos.",

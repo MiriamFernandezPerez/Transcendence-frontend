@@ -32,6 +32,13 @@
     "passwords_match": "Las contraseñas deben coincidir.",
     "invalid_file": "Archivo no válido. Por favor, suba un archivo de imagen (jpg, png)."
   },
+  "errors": {
+	"no_response": "No se puede conectar con el servidor. Por favor, inténtalo más tarde.",
+	"invalid_credentials": "Nombre de usuario o contraseña incorrectos.",
+	"csrf_error": "La sesión ha expirado. Por favor, recarga la página.",
+	"unexpected": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo.",
+	"unknown": "Ocurrió un error desconocido. Por favor, inténtalo de nuevo." 
+  },
   "landing": {
     "title": "TRANSCENDENCE CARD GAME",
     "subtitle": "Juega partidas en línea con tus amigos. Sube en el ranking y compite en torneos.",

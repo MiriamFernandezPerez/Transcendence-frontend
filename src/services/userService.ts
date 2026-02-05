@@ -1,57 +1,28 @@
-
+// src/services/userService.ts
 import api from './api';
-import type { UserProfile } from '../models/User';
+import type { User } from '../context/Auth';
 
-// Definimos la interfaz del Payload aquí para reutilizarla
+/* Este servicio se encargará de las operaciones relacionadas con el usuario, como obtener su perfil, actualizarlo, etc. */
 export interface UpdateProfilePayload {
     username: string;
     bio?: string;
     language?: string;
     password?: string;
-    avatar?: string; // URL string
+    avatar?: string;
 }
 
-// const userService = {
-//     /**
-//      * Obtiene el perfil del usuario logueado
-//      */
-//     getProfile: async (): Promise<UserProfile> => {
-//         const response = await api.get('/users/me');
-//         return response.data;
-//     },
-
-//     /**
-//      * Sube un archivo de imagen al servidor.
-//      * Retorna la URL de la imagen subida.
-//      */
-//     uploadAvatar: async (file: File): Promise<string> => {
-//         const formData = new FormData();
-//         formData.append('file', file); // 'file' debe coincidir con lo que espera el backend (NestJS suele usar 'file')
-
-//         const response = await api.post('/users/upload-avatar', formData, {
-//             headers: {
-//                 'Content-Type': 'multipart/form-data',
-//             },
-//         });
-        
-//         // Asumimos que el backend devuelve { url: "..." } o directamente el string
-//         return response.data.url; 
-//     },
-
-//     /**
-//      * Actualiza los datos del usuario (texto + avatar url)
-//      */
-//     updateProfile: async (data: UpdateProfilePayload): Promise<UserProfile> => {
-//         // Usamos PATCH porque solemos actualizar parcialmente
-//         const response = await api.patch('/users/me', data);
-//         return response.data;
-//     }
-// };
+/* Por ahora solo implementaremos un método de ejemplo para obtener el perfil del usuario, pero se pueden añadir más métodos según las necesidades de la aplicación. */
 const userService = {
-	
-	consoleLog: () => {
-		console.log("Componente funcionando");
-	}
-	
-}
+    // Ejemplo de método real
+    getProfile: async (): Promise<User> => {
+        const response = await api.get('/api/user');
+        return response.data;
+    },
+    
+    // Puedes dejar un placeholder si no tienes la ruta aún
+    consoleLog: () => {
+        console.log("Servicio de usuario listo");
+    }
+};
+
 export default userService;
